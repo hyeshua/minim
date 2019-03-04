@@ -1,0 +1,579 @@
+% Fichier linf.tex
+\ProvidesFile{linf.tex}[version 2018-01-22]
+% Decommenter les les lignes avec " %>> " pour tester le fichier
+%
+
+
+	\chapter{Introduction \`a linguistique formelle}
+	 
+	 \sommaire
+	 
+	 \section{Introduction}
+	  \subsection{Qu'est-ce que la linguistique formelle}
+	   La linguistique formelle est une approche de la linguistique qui utilise des outils logico-mathématiques pour analyser les faits de langues et représenter les structures langagières.
+	  \subsection{Utilité formalisation}
+	    Pour comprendre l'utilité de la formalisation, je vous propose de donner la parole \`a des chercheurs expérimentés dans le domaine :
+	    
+	    \entree{Chomsky 1957, p. 5}
+	    \begin{quote}
+	    	\motcle{Precisely}  constructed  models for  linguistic  structure  can  play  an  important  role,  both  negative and positive, in the process of discovery itself. By pushing a \motcle{precise} but  inadequate formulation  to an unacceptable conclusion, we can often expose the exact source of this inadequacy and, consequently, gain a deeper understanding of the linguistic data. More positively, a formalized  theory  may automatically  provide solutions for many problems  other  than  those  for  which  it  was  explicitly  designed. [...] I  think  that some of those linguists  who  have  questioned  the  value  of  precise  and  technical development  of linguistic  theory  may  have failed  to  recognize  the productive potential in the method of \motcle{rigorously stating} a proposed theory and applying it strictly to linguistic material with no attempt to avoid  unacceptable  conclusions  by ad hoc adjustments [...].
+	    \end{quote}
+        \begin{tradcit}
+        	Les modèles linguistiques construits avec \motcle{précision} peuvent jouer un important rôle dans le processus même de découverte, tant positivement que négativement. En proposant une formulation \motcle{précise} \`a une conclusion inacceptable, il est souvent possible d'exposer par la-même la source de cette inadéquation et, par consé\-quent, avoir une meilleure compréhension des données linguistiques. 
+        	Plus important encore, une théorie formalisée peut automatiquement fournir des solutions \`a plusieurs problèmes autres que ceux pour lesquels elle a \'et\'e explicitement conçue. [...] Je pense que certains des linguistes qui ont remis en cause la valeur des développements techniques de la théorie de la linguistique ont peut-être manqué de reconnaitre le potentiel de la méthode qui consiste \`a \motcle{formuler rigoureusement} une théorie proposée et \`a l'appliquer de façon stricte au matériau linguistique sans vouloir éviter les conclusions inacceptables par des ajustements ad hoc [...].
+        \end{tradcit}
+	    
+	    \entree{Chris Collins, \textit{\#syntactictipoftheday}, Nov. 2017}
+	    \begin{quote}
+	      I would basically call most of what goes on in generative syntax "semi-formal" (even in semantics). That has been the level of formalization that has allow us to make so many interesting discoveries. But just because the semi-formal mode has been so fruitful, that does not mean there is no place for formalization. 
+	      I don't think one should be obsessed by formalization either. That is, just because something is formalized, does not mean it is valuable. But it is a useful tool in certain cases. 	      
+	      In other words, the slogan is: Formalization is not a goal in and of itself, but rather a tool to achieve other goals (e.g., making predictions, understanding concepts, etc.). [...] 
+	      Formalization is a tool of [...] research, not an end in and of itself.
+	    \end{quote}
+        \begin{tradcit}
+          J'appellerais basiquement la plupart de ce qui se fait en syntaxe générative "semi-formelle" (même en sémantique). Cela a été le niveau de formalisation qui nous a permis de faire autant de découvertes inintéressantes. 
+          Mais juste parce que le mode semi-formel a été aussi fructueuse, cela ne veut pas dire qu'il n'y a pas de place pour la formalisation. 
+          Je ne pense pas non plus qu'il faille être obsédé par la formalisation c'est-\`a-dire que ce n'est pas parce que quelque chose est formalisé que cela a de la valeur. Mais c[la formalisation]'est utile dans certains cas. 
+          En d'autres mots,  le slogan est : La formalisation n'est pas un but en soi mais plutôt un outil pour atteindre d'autres buts (e.g., faire des prédictions, comprendre des concepts, etc.).
+          La formalisation est un outil de recherche, pas une fin en soi.
+        \end{tradcit}
+        
+        \vspace*{1em}
+        
+        Que faut-il retenir ? La formalisation n'est pas une fin en soi. Juste un outil d'analyse! mais un outil dont il serait dommage de se priver, surtout en tant qu'africain. 
+        En effet, la formalisation facilite le traitement automatique des langues. Or, nos langues ont besoin d'être automatisées (e.g., avoir des dictionnaires électroniques, des correcteurs orthographiques, des logiciels de reconnaissance vocale, etc.) en vue d'être compétitives. La formalisation est une étape n\'ecessaire au processus d'automatisation. De toute façon, les langages de programmation sont des langages formels.
+        
+	    \begin{prat}
+	      Il y a deux choses qui caractérisent la linguistique formelle, au-delà des symboles mathé\-ma\-tiques : la précision et la rigueur jusqu'au bout.
+	      \begin{description}
+	      	\item[La pr\'ecision: pas de formulations vagues.] Dans une approche formelle, on va  abandonner les formulations \textit{vagues}. e.g., on va préférer dire 5 cuillères \`a soupe d'huile, au lieu de ``un peu d'huile".
+	      	\item[La rigueur jusqu'au bout.] En linguistique formelle la précision et la rigueur de l'analyse sont au-dessus de la moyenne. Pour faire simple, dans une analyse formelle, on va s'attacher \`a appliquer mécaniquement les procédures définies.
+	      \end{description}
+          \entree{\it\bfseries L'usage des variables}
+            Les formulations en linguistique formelles font très souvent usage de variables. Les variables sont des lettres de l'alphabet latin (e.g., \textit{x, y, z}) ou grec (e.g., $ \alpha,\ \beta,\ \phi,\ \varphi $), écrites la plupart du temps en minuscule et en italique. Elles peuvent avoir des indices (e.g., $ x_1, y_{23}, z_4 $). Elles peuvent même être écrites en majuscules. Mais quelque soit la forme sous laquelle elles se présentent, les variables n'ont rien de mystérieux. Elles sont utilisées pour indiquer qu'\`a leur place va se trouver quelque chose d'autre. Leur usage est similaire \`a celui ``titre" dans le passage suivant :
+            \begin{quote}
+            	1.~~ titre\\
+            	1.1.~~ titre\\
+            	1.1.1.~~ titre
+            \end{quote}
+	    \end{prat}
+	   
+
+    \section{Introduction aux ensembles et aux fonctions}
+	  
+	  \subsection{Ensembles}
+	    \subsubsection{Notion d'ensemble}
+	      Un ensemble est simplement un groupe, une collection d'objets -- peu importe leur nature. 
+	      Il n'y a pas de restriction sur la nature des objets pouvant constituer un ensemble donné. Ainsi, un ensemble peut contenir des objets abstraits (e.g., les phonèmes), des objets irréels (e.g., le pays des singes volants, la planète Salybab, la planète des singe, le petit prince d'Antoine de Saint-Exupéry). Il peut aussi arriver que des éléments de diverses natures appartiennent à un même ensemble.
+	      Rien n'interdit d'avoir un ensemble composé de Homo sapiens, 1, Gerge Cloney, 0, A, a, C, (, «, +, Pluton et La voie lactée.
+	      Il n'y a pas non plus de restriction sur la taille minimale ou maximale d'un ensemble. Un ensemble ne peut pas contenir d'éléments du tout -- on l'appelle ensemble vide -- ou, à l'inverse, il peut contenir une infinité d'éléments -- l'ensemble des nombres entiers naturels par exemple.
+	      
+	      \subsubsection{Diagrammes de Venn}
+	        Une façon assez amusante de représenter les ensembles, c'est de le faire avec des bulles appelées diagrammes de Venn i.e. ces bulles qu'on voit dans les livres de CP.\\
+	        
+	        \noindent
+	        \begin{demiligne}
+	          Ceci est l'ensemble Gbich. Il contient certains des personnages qu'on retrouvent dans ce périodique.     
+	        \end{demiligne}
+            \begin{venndiag}
+            	\fbox{\parbox[t]{.45\linewidth}{\hspace{1.5em} Zekinan\hfill\\
+            			\hspace*{10.5em} Gazou\hfill\\
+            			\hspace*{5.5em} Cauphy\par 
+            			\vspace*{.5em} \hfill Tommy\\
+            			Jo'Bleck\hfill}}   
+            	
+            	Ceci est un pseudo-diagramme de Venn	         	
+            \end{venndiag}
+            
+            Les diagrammes de Venn sont assez simples mais peu adéquats quand il s'agit d'utiliser des fonctionnalités les plus inintéressantes de la théorie des ensembles -- sans compter qu'il peut être fastidieux de les utiliser `dans la vraie vie'. Pensez un peu aux arbres. Il serait plus réellement plus fastidieux de manipuler, dans les travaux scientifiques, des diagrammes de Venn que de faire des arbres syntaxiques.
+            
+            On utilise donc une des notations utilisant des lettres et des symboles. Ainsi, on peut les insérer comme pour les transcriptions phonétiques.  
+            
+            Nous allons donc introduire \`a partir de maintenant la théorie des ensembles avec des termes un peu plus formels mais gardez \`a l'esprit qu'il s'agit juste de symboles pour éviter de se compliquer la vie :-).
+	        %\cornersize{2}
+	        %\ovalbox{\parbox{4cm}{
+	         % A\qquad a \quad B \qquad j\\
+	          % \hspace{1em} c \quad D \quad e\hfill F\\
+	          % f\hspace{2em} g\qquad h 
+	        %}}
+	      
+	      
+          \subsubsection{Décrire un ensemble}
+	        La théorie des ensembles est un cadre qui permet de travailler avec des ensembles i.e.  les comparer, voir si les éléments de l'un sont en fait les éléments d'un autre, construire de nouveaux ensembles \`a partir d'ensembles existants, etc.
+	        
+	        \noindent Elle repose sur la notion d'appartenance parce que tout ce qu'il faut pour connaitre un ensemble, c'est savoir qui est dedans et qui ne l'est pas -- un peu comme un sac.
+	        \begin{notation}
+	        	Pour tout objet \textit{a} et tout ensemble \textit{A}, si \textit{a} est dans \textit{A}, on note 
+	        	$\bleu{a} \in \bleu{A}$ ; 
+	        	et on lit \textit{a} appartient \`a \textit{A} ou $ a $ est un élément de $ A $.
+	        \end{notation}
+        
+	        Il y a donc deux façons de décrire un ensemble.
+	        \begin{notation}[Notation en extension]
+		      Pour tout ensemble \bleu{A} qui contient exactement les éléments \bleu{a}, \bleu{b}, \bleu{c} et \bleu{d}, on note $ \bleu{A} = \lbrace \bleu{a}, \bleu{b}, \bleu{c}, \bleu{d} \rbrace $\\
+	        \end{notation}
+	        \begin{e.g.}
+		      Année = \{Janvier, Février, Mars, ..., Décembre\}
+	        \end{e.g.} 
+	        \begin{rmq}
+		      Dans une définition en extension d'un ensemble, 
+		      \begin{itemize}
+			    \item 
+			      L'ordre ne compte pas.
+			      \begin{e.g.}
+				    \{a,b\} = \{b,a\}
+				    
+			      \end{e.g.}
+			    \item 
+			      Le nombre d'occurrence d'une unit\'e ne compte pas non plus.
+			      \begin{e.g.}
+				    \{a,a,a\} = \{a\}
+				    
+			      \end{e.g.}
+		\end{itemize}
+	\end{rmq}
+    
+    \begin{rmq}
+      Tous les symboles de relation que nous allons voir admettent un double. Si la relation en question n'a pas cours entre les objets considérés, le symbole sera barré par un `/'. 
+      
+      Par exemple si $ a $ n'appartient pas \`a $ A $, on écrira $ a \notin A $ pour dire que $ a $ n'est pas un élément de $ A $. 
+    \end{rmq}
+	\begin{notation}[Notation en intension]
+		Un ensemble \bleu{A} peut être également noté comme suit : $ \bleu{A} = \lbrace \bleu{x} \, : \, \mbox{crit\`eres \`a remplir pour appartenir \`a } \bleu{A} \rbrace $ $ \bleu{A} = \lbrace \bleu{x} \, \vert \, \mbox{crit\`eres \`a remplir pour appartenir \`a } \bleu{A} \rbrace $ ou .
+		On lit \textit{\bleu{A} est l'ensemble des individus \bleu{x} tels que \bleu{x} ...}
+	\end{notation}
+	
+		\ex. Année = \{\textit{x} : \textit{x} est un mois de l'année.\}
+	
+    
+    \begin{appli}
+    	Soit X\prim\ le sens de X, Étudiant\prim\ = \{$ x\ \vert\ x $ est un étudiant\}
+    \end{appli}
+    \begin{exo}
+    	\begin{enumerate}
+    	  \item 
+    	    Déterminez Ivoirien\prim
+    	   \item 
+    	     La phrase suivante est-elle vraie ou fausse?
+    	     `` Une phrase est un ensemble de mots. " Justifiez votre réponse.
+    	  \item 
+    	    Quand peut-on dire de deux ensembles qu'ils sont égaux ?
+    	  \item  
+    	    Écrire l'ensemble des entiers naturel plus petits que 2
+    	    \begin{enumerate}
+    	    	\item[a.] en extension
+    	    	\item[b.] en intension
+    	    \end{enumerate}
+          \item 
+            Soit l'ensemble A = \{a,b,4,c\}. Donnez quatre notations en extension de A.
+    	\end{enumerate}
+    \end{exo}
+
+	\subsubsection{Ensemble d'ensembles}
+	Un ensemble peut donc avoir pour élément un autre ensemble.
+	  \begin{rmq}
+		Si A = \{a, \{b,c\}\} alors b $ \notin $ A.
+	  \end{rmq}
+      \begin{exo}
+      	On donne l'ensemble B = \ens{1, j, \ens{j, 1}, \ens{j,\ens{1, j}, b, 1}}. Combien d'é\-lé\-ments possède-t-il ?
+      	
+      \end{exo}
+      \begin{appli}
+      	En utilisant la méthodologie du cours élémentaire, analysons la phrase P suivante. P : ``Amlan fait la vaisselle''.
+      	
+      	\etape\ On sait qu'une phrase est constituée d'un groupe sujet (GS) et d'un groupe verbal (GV).
+      	
+      	Ici GV = fait la vaisselle, GS = Amlan.
+      	Donc P = \{Amlan, fait la vaisselle\} 
+      	
+      	\etape\ Or GV est lui-même constitué de d'un verbe V = \{fait\} et de son complément d'objet direct COD = \{la vaisselle\}.
+      	Donc GV = \{fait, la vaisselle\} et \\
+      	P = \{Amlan, \{fait, \{la vaisselle\}\}\}
+      	
+      	\etape\ Il se trouve que le COD aussi est un ensemble constitué de \textit{la} et \textit{vaisselle}. 
+      	
+      	Donc \parbox[t]{5cm}{\begin{tabular}{l}
+      			COD = \{la, vaisselle\} \\
+      			GV = \{fait, \{la, vaisselle\}\} \\
+      			P = \{Amlan, \{fait, \{\{la, vaisselle\}\}\}\}
+      	\end{tabular}}\par 
+      Il y a un problème cependant, cette analyse ne nous donne pas la phrase dans sa forme de surface. En effet, les éléments sont juste structurés mais pas ordonnés. Si P = \{Amlan, \{fait, \{\{la, vaisselle\}\}\}\}, on tout a fait avoir 
+      \textit{P : vaisselle la fait Amlan} comme \textit{P : Amlan fait la vaisselle}. 
+      
+      Nous allons y revenir plus bas, quand nous aurons des outils pour ordonner les ensembles.
+      \end{appli}
+	\subsubsection{Relations basiques sur les ensembles}
+	\paragraph{Inclusion}
+	
+	\begin{defin}[Inclusion] 
+		Quel que soit l'ensemble qu'on considère (appelons-le A), il existe un ensemble B dont tous les éléments sont aussi des éléments de A.
+		\\ Cet ensemble est appelé \textit{sous-ensemble de A} ou {\it partie de A}.
+		
+		On note $ B \subseteq A $ et on lit {\it B est inclus dans A}
+	\end{defin}
+    
+    \paragraph{Inclusion stricte} La relation d'inclusion exige juste que tous les éléments de A soient les éléments de B sans que nécessairement les éléments de B soient plus nombreux que ceux de A i.e. qu'il existe des éléments de B qui ne soient pas éléments de A. En clair, A et B peuvent avoir les mêmes éléments -- et donc être égaux. L'inclusion stricte exige en plus que les deux ensembles soient différents.
+    \begin{defin}[Inclusion stricte] 
+      Pour tous ensembles A et B, A est strictement inclus dans B ssi tous les éléments de A sont aussi des éléments de B et qu'il existe des éléments de B qui ne sont pas éléments de A.
+      \\ $ A $ est appelé \textit{sous-ensemble propre de $ B $}\marginpar{\includegraphics[height=2.1cm,width=1.8cm]{pix/Ainclus-strictB}}.
+    	
+      On note $ B \subseteq A $ et on lit {\it B est inclus dans A}
+    \end{defin}
+    \begin{appli}
+      La relation d'inclusion stricte est assez appropri\'ee pour modéliser les concepts d'hyponymie et d'hyperonymie.
+      \begin{defin}[Hyponymie]
+      	Pour tout mot A et B, A est \textit{hyponyme} de B ssi A\prim\ $ \subset $ B\prim.
+      \end{defin}
+      \begin{exo}
+      	Définissez la relation d'hyperonymie.
+      \end{exo}
+    \end{appli}
+    
+    
+    \paragraph{Égalité} Rappelez-vous que deux ensembles sont égaux ssi ils ont \textit{exactement} les mêmes éléments. Formellement, cela nous donne la définition suivante. 
+    
+    \begin{defin}[Égalité]
+      Pour deux ensembles quels qu'ils soient -- disons A et B, $ A = B $ ssi $ B \subseteq A $ et $ A \subseteq B $.
+    \end{defin}
+    
+    \begin{exo}
+      La phrase suivante est-elle vraie ou fausse : ``Pour tout mots A et B, A et B sont synonymes ssi A\prim\ = B\prim. Justifiez votre réponse. 
+    \end{exo}
+
+  \subsubsection{Opérations basiques sur les ensembles}
+    \paragraph{Union}
+	\begin{defin}[Union]
+		Si on considère deux ensembles quels qu'ils soient -- disons A et B -- il existe un ensemble C dont les éléments sont tous les éléments de A et de B -- soit tous éléments qui appartiennent ou \`a A ou \`a B. \\ Cet ensemble est appelé \textit{union} de A et B.\marginpar{\includegraphics[height=2.1cm,width=1.8cm]{pix/AunionB}}
+		
+		On note $ C = A \cup B $ et on lit {\it A union B}
+	\end{defin}
+	
+	\paragraph{Intersection}
+	\begin{defin}[Intersection]
+		Si on considère deux ensembles quels qu'ils soient -- disons A et B -- il existe un ensemble C dont les éléments sont tous les éléments qui appartiennent soit \`a A soit \`a B. \\ Cet ensemble est appelé \textit{intersection} de A et B.\marginpar{\includegraphics[height=2.1cm,width=1.8cm]{pix/AinterB}}
+		
+		On note $ C = A \cap B $ et on lit {\it A inter B}
+	\end{defin}
+	\begin{exo}
+	  Donnez une représentation formelle de Etudiant\_ivoirien\prim
+	\end{exo}
+	\paragraph{Différence}
+	  \begin{defin}[Différence d'ensemble]
+	    Pour tous ensembles A et B, la différence entre A et B est l'ensemble de tous les éléments qui appartiennent \`a A et qui n'appartiennent pas \`a B i.e. \{$ x\ \vert\ x \in A $ et $ x \notin B $\}.\marginpar{$ A \privede B = \{ x\ \vert\ x \in A \mbox{ et } x \notin B \} $} 	
+	    
+	    On note $ A \privede B $ \couple{et on lit \textit{A priv\'e de B}} ou $ A - B $. 
+	  \end{defin}
+	   
+	  
+	  \begin{defin}[Complémentaire d'un ensemble]
+	     Pour tous ensembles A et B tels que $ A \subset B $, l'ensemble $ C $ tel que $ C = B - A $ est appelé complémentaire de A dans B.
+	     
+	     On note $ C = \complement_AB = B \privede A $.
+	     
+	     Le complémentaire de A peut être noté simplement $ \complement A $ ou $ \overline{A} $ ssi B est spécifié.
+	  \end{defin}
+        
+      \begin{exo}
+      	Si on se donne un ensemble U de tout ce qui existe dans le monde, auquel on peut doc faire référence, déterminez :
+      	\begin{enumerate}
+      		\item {[--\textsc{anim}]}\prim
+      		\item {[--\textsc{x}]}\prim\ pour tous les [+\textsc{x}] tels que [+\textsc{x}]\prim\ est du même type que [+\textsc{anim}]\prim\  ou [+\textsc{hum}]\prim\
+      	\end{enumerate}
+      \end{exo}
+	\paragraph{Produit cartésien et puissance cartésienne}
+	\begin{defin}[Produit cartésien (de deux ensembles)]\label{def:prod-cart}
+		Si on considère deux ensembles quels qu'ils soient -- disons A et B -- il existe un ensemble C  qui est l'ensemble des couples dont le premier élément appartient a A et le deuxième a B.\\ C est le {produit cartésien} de A et B.
+		
+		On note $ C = A \times B $ et on lit {\it A croix B}
+		
+		On peut aussi écrire $ C = \{\langle a,b\rangle \, \vert \, a \in A \, \mbox{et} \, b \in B\}$
+	\end{defin}
+	\begin{rmq}
+		Dans cet genre d'ensembles, l'ordre compte. $\langle a,b\rangle \neq \langle b,a\rangle $. Aussi A $\times$ B $\neq$ B $\times$ A.
+	\end{rmq}
+    \begin{exo}
+      En vous basant sur la définition \ref{def:prod-cart}, proposez une définition formelle des concepts de \textit{trait binaire} et \textit{l'ensemble des traits binaires}.
+      
+    NB: un trait binaire est un trait qui n'admet les valeurs + ou --.
+    \end{exo}
+    \solut
+    \reinit{etap}
+    \noindent\etape\ Par définition, les traits binaires ont une valeur tirée d'un ensemble clos \{+, --\} e.g. +\textsc{HAUT}, +N, \textsc{+adv}, etc. On peut donc définir un ensemble VALB tel que VALB = \{+,--\}.\\
+    
+    \noindent\etape\ Dans un trait binaire, on a deux parties le `trait' lui-même, et sa valeur. On sait d'o\`u vient la valeur -- de VALB. Il reste \`a définir un ensemble qui va contenir tous les `traits'. Mais cet ensemble ne peut être en réalité l'ensemble des traits puisque +\textsc{trait} est aussi un trait. Il faut donc renommer le symbole qui vient après la valeur e.g. ATR dans +\textsc{ATR}. Appelons-le \textit{attribut}.\\
+    
+    \noindent\etape\ Il est maintenant possible de définir l'ensemble des attributs -- ATT.\\
+    
+    \noindent\etape\ Puisque de façon général, dans une trait binaire, la valeur vient avant l'attribut, on a des couples de la forme \couple{valeur,attribut}, l'ensemble des traits T = \{\couple{valeur,attribut} $ \vert\ valeur \in \{+,-\}\mbox{ et } attribut \in ATT $\}  \\
+	Or \{\couple{valeur,attribut} $ \vert\ valeur \in \{+,-\}\mbox{ et } attribut \in ATT $\} = VALB $ \times $ ATT\\
+	Donc T = VALB $ \times $ ATT.\\
+	
+	\noindent\etape\ Un trait binaire peut être par conséquent défini comme suit : X est un trait binaire ssi $ X \in T $. [cf. e.g. Gazdar et al 1985, Adger 2010 pour des définitions similaires]\\
+	
+	De même, on peut construire le produit cartésien de $ n $ ensembles. Ainsi que le produit cartésien d'un même ensemble $ n $ fois. Dans ce dernier cas, on parle de souvent de \textit{puissance cartésienne $ n_ieme $} de cet ensemble
+	\begin{defin}[Puissance cartésienne (\textit{n-uplets})]
+		Si on considère un ensemble quel qu'il soit - disons A - il existe un ensemble B  tel que 
+		$ B = \underbrace{A \times A \times ... \times A}_{n \, times} = A^n $\\ 
+		Avec $ A^n = \lbrace (x_1, x_2, ..., x_n) \, \vert  \, x_i \in A, 1 
+		\leq i 
+		\leq n \rbrace $ \\
+		
+		Les éléments d'un tel ensemble sont appelés {\it n-uplets}. B est appelé \textit{puissance n-i\`eme} de A. \\
+	\end{defin} 
+	Une autre notation est possible : la notation en {\it forme de mots}.
+	\begin{notation}[Notation en forme de mot]
+		Si on considère un ensemble quel qu'il soit - disons A - il existe un ensemble B  tel que $ B = \underbrace{A \times A \times ... \times A}_{n \, times} = A^n $\\
+		Avec $ A^n = \lbrace x_1 \, x_2 \, ...\, x_n \, \vert  \, x_i \in A, 1 
+		\leq i \leq n \rbrace $ \\
+	\end{notation}
+	 
+    \begin{appli}
+      Soit $ /X/ $ la représentation phonologique du mot X. Comment donner une définition générale de /X/ en utilisant la théorie des ensembles ? 
+      
+      \reinit{etap}
+      \etape\ On sait que pour tout mot X, /X/ est un ensemble ordonné de phonèmes. On admet aussi que ces phonèmes sont puisés dans un stock -- et donc un ensemble qu'on va appeler PH. /X/ peut être vu comme un p-uplet formé \`a partir de PH.
+      
+      \etape\ Il est donc possible d'affirmer ce qui suit Pour X, $ /X/ \in PH^n $ avec $ n $ représentant le nombre de phonèmes qu'il y a dans /X/ [cf. e.g. Kracht]
+      
+      Il est possible de formuler autrement cette définition. En effet, si une théorie phonologique ne dit que cela, elle ignore un point important : les traits. C'est une théorie qui assume -- même sans le vouloir -- que les phonèmes sont des atomes i.e. des objets qu'on ne peut analyser en éléments plus petits. Or, depuis très longtemps déjà on sait que les phonèmes sont des ensembles de traits. Nous allons donc voir, par une série d'exercices, comment modifier la définition que nous venons de donner de /X/. Nous commençons par définir un phonème.  
+      \begin{exo}
+      	En vous appuyant sur la théorie des ensembles, donnez une définition de \textit{phonème}
+      \end{exo}
+      
+      \solut\reinit{etap}
+      \etape\ On se donne  un ensemble de traits phonologiques universel i.e. TPH.
+      
+      
+      \etape\ On remarque qu'un phonème est tout simplement un sous-ensemble propre de TPH.
+      
+      \etape\ On donne donc la définition suivante : \\
+      Pour tout phonème $ \pi $, \colorbox{lightgray}{$ \pi \subset TPH $.}\par Elle équivaut \`a celle-ci : 
+      Pour tout phonème $ \pi $, \colorbox{lightgray}{$ \pi \in \wp(TPH) \privede TPH $.} 
+          
+      \begin{exo}
+      	A partir de la définition des phonèmes proposée dans l'exercice précédent, proposez une définition de /X/.
+      \end{exo}
+  	  
+  	  \solut
+  	  On définit PH. $ PH = \wp(TPH) \privede TPH $. On peut s'arrêter ici, puisqu'on a résolu notre problème : notre théorie phonologique sait maintenant que les phonèmes ne sont pas des atomes. La définition proposée au tout début est tout \`a fait correcte. il fallait juste ajouter les deux définitions : phonèmes et TPH. \par 
+  	  Néanmoins, poursuivons notre entreprise de reformulation. Si $ PH = \wp(TPH) \privede TPH $ et que $ /X/ \in PH^n $, alors $ /X/ \in (\wp(TPH) \privede TPH)^n $ [cf. e.g. Collins et Stabler 2016
+  	  %\citealt{cs16}
+  	  ]
+    \end{appli}
+	\subsubsection{Relations}
+	Il arrive que les éléments d'un même ensemble, ou d'ensembles différents entretiennent une certaine relation. Par exemple, dans l'exemple \Next, Yao entretient une relation de paternité avec Aya. 
+	\ex.\label{YaoPereAya} Yao est le père de Aya
+	  
+	On dit que la relation de \textit{paternité} est définie \textit{sur} l'ensemble H des humains. De même, si on considère l'ensemble H des humains et l'ensemble V des voitures, il est facile de se rendre compte qu'il existe des éléments de l'ensemble H qui sont en relation de \textit{possession} avec un ou plusieurs éléments de l'ensemble V (i.e. certains humains possèdent une ou plusieurs voitures) On dit alors que la relation de \textit{possession} est une relation \textit{de} H \textit{vers} V. 
+	\begin{notation}
+		Si \textit{x} entretient avec \textit{y} une relation \textit{R} donnée, on écrira $\langle x,y\rangle_R$ ou \\ \textit{x R y}.
+	\end{notation}
+	De façon formelle, une relation est un ensemble de couples.
+	\begin{defin}[Relation] Soit deux ensembles $A$ et $B$, 
+		Si $\mathcal{R}$ est une relation de $A$ vers $B$, alors $\mathcal{R}\subseteq A \times B$.
+	\end{defin}
+	
+	\begin{exo}
+	  \newcommand{\amide}[2]{#1 est l'ami de #1}
+	  On considère la situation suivante :
+	  \begin{itemize}
+	  	\item \amide{Roland}{Gertrude}
+	  	\item \amide{Basile}{Thierry}
+	  	\item \amide{Michael}{Martin}
+	  	\item \amide{Martin}{Roland}
+	  	\item \amide{Marcel}{Marceline}
+	  	\item \amide{Julien}{Julienne}
+	  \end{itemize}
+    Donner le sens de \textit{ami} i.e. ami\prim
+	\end{exo}
+	
+	\begin{exo}
+		\newcommand{\amide}[2]{#1 est l'ami de #1}
+		On considère la situation suivante :
+		\begin{itemize}
+			\item \amide{Roland}{Gertrude}
+			\item \amide{Gertrude}{Marie}
+			\item \amide{Marie}{Marceline}
+			\item Si \amide{X}{Y} alors \amide{Y}{X}
+		\end{itemize}
+		\begin{enumerate}
+			\item ami\prim = \ens{\couple{Roland, Gertrude}, \couple{Gertrude, Roland}, \couple{Gertrude, Marie}, \couple{Marie, Gertrude}, \couple{Roland, Marie}, \couple{Marie, Marceline}} ?
+			\item Sinon donnez l'ensemble correct.
+		\end{enumerate}
+	\end{exo}
+    
+    \begin{exo}\label{exo:FrappeMangeChasse}
+      \newcommand{\DecRelBin}[3]{#2 #1 #3}
+      \newcommand{\DeclarerPersExoFrappeMangeChasse}[7]{
+      	\begin{itemize}
+      		\item \DecRelBin{frappe}{#1}{#2}
+      		\item \DecRelBin{frappe}{#2}{#3}
+      		\item \DecRelBin{frappe}{#4}{#5}
+      		\item \DecRelBin{mange}{#6}{#7}
+      		\item \DecRelBin{chasse}{#6}{#7}
+      		\item \DecRelBin{chasse}{#1}{#2}
+      		\item \DecRelBin{chasse}{#4}{#5}
+      	\end{itemize}
+      }
+      On considère la situation suivante :  \DeclarerPersExoFrappeMangeChasse{Geoffroy}{Wifried}{Marie-Laure}{C\'ecile}{Sophie}{Alexis}{une biche}
+      
+      D\'eterminez : frapper\prim, manger\prim, chasser\prim, chasser\_et\_manger\prim, chasser\_et\_frapper\prim 
+    \end{exo}
+	\paragraph{Ensembles ordonnés et relations d'ordre}
+	  Il est possible produire de l'effet d'ordre typique des p-uplets en définissant une relation de précédence (\tprec) sur l'ensemble des éléments du p-uplet. Prenons par le mot /pan/. Il possède trois éléments : a, p, n. Appelons-le M. Donc M = \{p, n, a\}. Définissons maintenant une relation \tprec\ (i.e. précède, vient avant) de M vers M telle que \tprec\ = \{\tseq{a,n},\tseq{p,a},\tseq{p,n}\}. On a donc $ a \prec n,\ p\prec a,\ p\prec n $. On peut aussi écrire $ p \prec a \prec n $. Et on obtient un ordre. L'information n\'ecessaire donc pour caractériser un ensemble ordonn\'e est de savoir qui vient avant qui.\notemar{exemple d'ensemble ordonn\'e : l'ensemble des entiers naturels.}
+	  
+	  \begin{exo}
+	  	Soit $ \mathcal{R} $ une relation de précédence telle que\\ $ \mathcal{R} = \{\seq{p,a},\seq{p,n},\seq{p,p},\seq{a,p},\seq{a,a},\seq{a,n},\seq{n,a},\seq{n,p}\} $. Écrivez le p-uplet équivalent \`a $ \mathcal{R} $
+	  \end{exo}
+      
+      \begin{exo}
+        Donnez l'extension de la relation de précédence correspondant au p-uplet suivant : \tseq{a,r,n,a,k}
+      \end{exo}
+      
+      \begin{appli}
+      	Revenons au problème pos\'e par l'analyse de la phrase : les éléments étaient juste structurés mais pas ordonnés. Une analyse qui assume que P = \{Amlan, \{fait, \{\{la, vaisselle\}\}\}\}, peut aussi bien générer 
+      	\textit{P : vaisselle la fait Amlan} que \textit{P : Amlan fait la vaisselle}. \\
+      	La solution \`a ce problème nous apparait maintenant évidente : munir P et ses constituants d'une relation d'ordre.
+      	\begin{notation}[Ensemble muni d'une relation]
+      	  Si un ensemble E est muni d'une relation $ \mathcal{R} $, on écrit E$_{\mathcal{R}}  $
+      	\end{notation}
+        Ainsi P = \{Amlan, \{fait, \{\{la, vaisselle\}$_{\mathcal{\prec}}  $ \}$_{\mathcal{\prec}}  $\}$_{\mathcal{\prec}}  $ \}$_{\mathcal{\prec}}  $ soit \chevg\ Amlan, \chevg\ fait, \chevg\chevg\ la, vaisselle\chevd\chevd\chevd\chevd
+      \end{appli}
+	\subsection{Fonctions}
+	
+	Une fonction est un type particulier de relations. Seulement, \`a la différence des relations que nous avons déjà vues, une relation fonctionnelle $-$ ou fonction $-$ est une relation qui est telle que tout élément d'un ensemble donné (e.g., A) est en relation avec -- ou a pour correspondant -- un et un seul élément d'un (autre) ensemble (e.g., B).
+	
+	Voici des fonctions qui nous sont familières :\marnote{5+2 ne peut donner qu'un seul résultat, i.e. 7. De même, il n'y a pas deux nombres qui sont double de 3 mais un seul, i.e. 6.}\\
+	
+	\noindent
+	\begin{demiligne}
+	  	\includegraphics[width=1.8cm,height=2.5cm]{pix/fonctionf}\quad  \parbox[b]{5cm}{ 
+	  	Cette fonction fait correspondre \`a tout nombre de la colonne de gauche, le nombre égal au nombre de départ ajout\'e de 2.}
+	\end{demiligne}
+    \begin{demiligne}
+    	\includegraphics[width=1.8cm,height=2.5cm]{pix/fonctiondouble}\quad \parbox[b]{5cm}{%  
+    	Cette fonction fait correspondre \`a tout nombre de la colonne de gauche, le nombre égal au double du nombre de départ.}
+    \end{demiligne}
+    
+    Il existe plusieurs façons de noter une fonction. Commençons par celle-ci -- probablement la plus familière.
+    \begin{notation}[Fonction-1]
+      Si $ f $ est une fonction qui, a $ x $ associe $ y $, il est possible d'écrire : $ f(x) = y $. On lit : $ f $ de $ x $ est égal a $ y $.
+    \end{notation}
+    Par exemple, nos deux fonctions de départ on dispose de la notation suivante :
+    
+    \noindent
+    \begin{demiligne}
+    	\includegraphics[width=1.8cm,height=2.5cm]{pix/fonctionf}\quad  \parbox[b]{5cm}{ 
+    	Si on appelle cette fonction $ A2A $, alors $ A2A(5) = 7 $ et plus généralement \motcle{$ A2A(x) = x+2 $}}
+    	   
+    \end{demiligne}
+    \begin{demiligne}
+    	\includegraphics[width=1.8cm,height=2.5cm]{pix/fonctiondouble}\quad \parbox[b]{5cm}{ 
+    		Si on appelle cette fonction $ DBL $, alors $ DBL(5) = 10 $ et plus généralement \motcle{$ A2A(x) = x\times 2 $}}
+    \end{demiligne}
+
+	\begin{exo} %
+	  On consid\`ere la fonction {\rmfamily\it \bleu{f}} qui \`a chaque élément de l'ensemble {\rmfamily \bleu{A} = \{\bleu{k},\bleu{g},\bleu{b},\bleu{a}\} } associe la majuscule correspondante dans l'ensemble {\rmfamily \bleu{B} =\{\bleu{K},\bleu{G},\bleu{B},\bleu{A}\}}.
+	  \begin{enumerate}
+	  	\item Déterminez $ MAJ(a) $, $ MAJ(k) $.
+	  	\item Déterminez $ MAJ(d) $.
+	  	\item Modifiez $ MAJ $ en sorte que seul $ e $ ait une valeur par la fonction. 
+	  \end{enumerate}
+	  
+	\end{exo}
+
+	Il est également possible de représenter \textit{\bleu{f}} comme suit :
+	\begin{center}
+		\[%
+			f :=
+			\left[
+			\begin{array}{lll}
+				\bleu{a} & \longmapsto & \bleu{A}\\
+				\bleu{b} & \longmapsto & \bleu{B}\\
+				\bleu{g} & \longmapsto & \bleu{G}\\
+				\bleu{k} & \longmapsto & \bleu{K}\\
+			\end{array}
+			\right]
+		\]%
+	\end{center}
+	
+	\begin{termin}[Domaine et co-domaine d'une fonction]\label{term:domaine}
+		Soit $ f $ une fonction qui \`a tout \'el\'ement d'un ensemble A associe un seul \'el\'ement d'un ensemble B. A est appel\'e \textit{domaine}, \textit{domaine de d\'efinition} ou encore \textit{ensemble de d\'efinition} de $ f $. B est appel\'e \textit{co-domaine} de $ f $.\\
+	\end{termin}
+	\begin{notation}
+		Soit $ f $ une fonction ayant pour domaine A et pour co-domaine B, on \'ecrit : $ f : A \rightarrow B $ ; et on lit $ f $ est une fonction de $ A $ vers $ B $.
+	\end{notation}
+
+	\begin{prat}[Les règles comme fonctions]
+	  Supposons une langue o\`u tous les phonèmes sourds deviennent sonore quand ils sont précédés d'un segment sonores. Schématiquement, on a ce qui suit :
+	  \[
+	    C_{[\textsc{-son}]} \rightarrow C_{[\textsc{+son}]} / \_[\textsc{+son}]
+	  \]
+	  Cette règle peut être modélisée comme une fonction qui change tout phonème sourd en phonème sonore lorsqu'il précède immédiatement un segment possédant un trait [\textsc{+son}]. Nous allons procéder par étape.
+	  
+	  \reinit{etap}
+	  \noindent\etape\ Modélisons le changement d'un phonème sourd en phonème sonore. La différence entre un phonème sourd et un phonème sonore est le trait de sonorité : [\textsc{-son}] pour les phonèmes sourds et [\textsc{+son}] pour les phonèmes sonores. Changer un un son sourd en son sonore revient \`a remplacer le trait [\textsc{-son}] par [\textsc{+son}].
+	  
+	  Mais que veut dire remplacer, formellement ? C'est enlever/soustraire l'existant et ajouter un nouveau \`a sa place.
+	  En termes d'ensemble donc si on prend X pour un phonème sourd, le sonoriser revient \`a exécuter ce qui suit :
+	  \[
+	    X \privede [\textsc{-son}] \cup [\textsc{+son}]
+	  \] 
+	    
+	  \noindent\etape\ Une fonction qui change les [\textsc{-son}] en [\textsc{+son}] est une fonction 
+	  \[
+	    f: x \mapsto x \privede [\textsc{-son}] \cup [\textsc{+son}]
+	  \]
+	  Mais il faut s'assurer que cette fonction ne change que les [\textsc{-son}] précédant un phonème [\textsc{+son}] 
+	  
+	  \noindent\etape\ Définissons un phonème [\textsc{+son}]. y est un phonème [\textsc{+son}] ssi $ [\textsc{+son}] \in y $ 
+	  
+	  \noindent\etape\ Formalisons cette règle d'assimilation
+	  
+	  \ex. $ Sonoris : x \mapsto x \privede [\textsc{-son}] \cup [\textsc{+son}] \mbox{ ssi il existe un phon\`eme } y \mbox{ tel que [\textsc{+son}]} \in y  $ et $ x \prec y $
+	  
+	\end{prat}
+	
+	\begin{exo}
+	  Définir en termes de fonction : 
+	  \begin{itemize}
+	  	\item la spirantisation
+	  	\item l'assimilation progressive de hauteur
+	  \end{itemize}
+	\end{exo}
+    
+    \subsubsection{Fonction \`a deux arguments}
+    Il arrive qu'une fonction prenne plus d'un argument. Par exemple, l'opération d'addition peut être vue comme une fonction qui prend deux arguments et retourne leur somme i.e. $ Add(x,y) = x + y $.
+    
+    \begin{appli}
+      Par exemple, si on veut formaliser le concept d'assimilation partielle régressive, il nous faut non seulement un segment \`a assimiler mais aussi le paramètre sur lequel porte l'assimilation.
+      \ex. $ AssimPart : \couple{x,[\textsc{t}]} \mapsto x \privede [\textsc{t}] \cup [\textsc{--t}] \mbox{ ssi il existe un phon\`eme }$ $ y \mbox{ tel que [\textsc{--t}]} \in y  $ et $ x \prec y $ o\`u [--] représente l'opposée de la valeur de [\textsc{t}]. 
+       
+    \end{appli} 
+	\begin{exo}
+	  Modélisez \`a l'aide d'une fonction la nasale homorganique.  
+	\end{exo}
+    
+    
+	\subsubsection{Les ensembles comme fonctions}
+	On sait aussi que tout ce qu'il faut pour connaitre un ensemble, c'est savoir qui est dedans et qui ne l'est pas.\\
+	Cette information peut être rendu par une fonction
+	\footnote{Pour une introduction aux fonctions, voir Roussarie, Notions de base: ensembles et fonctions, \S 3, sp\'ecifiquement les pages 8 - 10.}
+	qui associe aux éléments d'un ensemble de r\'ef\'erence, les éléments d'un ensemble binaire (e.g. \{Vrai,Faux\}, \{Oui,Non\} ou, plus couramment, \{1,0\}).
+	\begin{defin}[Fonction caractéristique]\label{def:fonction_caracteristique}
+		La fonction caractéristique d'un ensemble A donn\'e est 
+		\begin{eqnarray*}
+			\chi_{A}	&:& U \rightarrow \{1,0\} \\
+			& & x \mapsto 1\mbox{ ssi } x\in\ A \\
+			& & x \mapsto 0\mbox{ ssi } x\notin\ A
+		\end{eqnarray*}
+	\end{defin}
+	\begin{exo}
+	  Définissez la fonction caractéristique de \textit{ami\prim}, \textit{père\prim}, \textit{soeur\prim}, \textit{mer\prim}, \textit{repas\prim , animal\prim , maison\prim}.
+	\end{exo}
+	\begin{exo}
+	  Donnez, sous la forme d'une fonction, le sens des mots suivants en français ivoirien : choco, kouadjo, dj\`e, gb\`es\`e. [pour le cours de sémantique minimaliste] 
+	\end{exo}
+
+%\end{document}
+\endinput 

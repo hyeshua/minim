@@ -1,0 +1,684 @@
+% Fichier sym.tex
+%
+
+\ProvidesFile{sym.tex}[version 2018-01-19]
+% Decommenter les les lignes avec " %>> " pour tester le fichier
+%
+% ===================================
+%% File partly assisted by LyX 2.2.2 
+%% LyX tasks were :
+%%	- document arborescence
+%%	- conversion unicode a [tipa-]latex
+
+
+
+\chapter{Syntaxe Minimaliste}
+  \sommaire
+  
+\section{Fusion}
+
+\subsection{Présentation et définition}
+
+Elle  consiste à  combiner deux objets pour dériver un troisième composé des deux premiers.
+
+\begin{defin}[Fusion]
+	Fusion(x, y)= z = \{x,y\}
+\end{defin}
+
+ 
+\begin{defin}[Constituant immédiat]
+	Pour tout x et pour tout k, x est un constituant immédiat de k ssi x \apart\ k.
+\end{defin}
+
+De quelle nature sont les arguments que la Fusion utilise ? i.e. quels type d?unité peut-on fusionner ? 
+\begin{itemize}
+  \item Des unités lexicales (mots)
+    \ex. Fusion (le, chat) = {le, chat}
+
+  \item Des syntagmes
+    \ex. Fusion (\{le,chat\},mange) = \{\{le,chat\},mange\}
+
+\end{itemize}
+Il nous faut donc un terme générique qui englobe items lexicaux et syntagmes : objet syntaxique.
+\begin{defin}[Objet syntaxique]
+$ x $ est un objet syntaxique ssi 
+\begin{itemize}
+  \item $ x $ est un item lexical ou
+  \item $ x $ est un syntagme
+\end{itemize}
+\end{defin}
+i.e  un objet syntaxique est un syntagme ou un item lexical. Il peut être  une catégorie lexicale (e.g. verbe, adjectif, nom, adverbe) ou fonctionnelle (e.g. déterminant, auxiliaire, flexion).  
+
+En clair la fusion est une opération qui prend deux objets syntaxiques et crée un nouvel objet syntaxique qui correspond à l?ensemble contenant les deux objets syntaxiques de départ. 
+ \begin{defin}[Fusion (2)]
+	Pour tout objet syntaxique x et y, Fusion(x,y) = z = \{x,y\}.
+\end{defin}
+\begin{exo}
+	\begin{enumerate}
+		\item Décrivez la composition des phrases suivantes
+		\begin{enumerate}
+			\item Les étudiants de Cocody 
+			\item Les enfants mangent du pain très rapidement.
+		\end{enumerate}
+		\item Donner la structure des phrases suivantes 
+		\begin{enumerate}
+			\item La maison que Jack a bâtie
+			\item Le malt qui était dans la maison que Jack a bâtie.
+		\end{enumerate}
+	\end{enumerate}	
+\end{exo}
+\begin{asav}
+	Combien d'arguments prend $ Fusion $ ? Chomsky admet la possibilit\'e que d'une certaine façon, $ Fusion $ puisse prendre plus de deux arguments -- c'est dans le cadre d'une définition assez générale de cette opération. Néanmoins, l'analyse des données linguistiques jusqu'\`a présent nous conforte dans l'idée que $ Fusion $ est ne s'applique qu'\`a deux objets syntaxiques \`a la fois. En l'absence de preuves contraires, nous pouvons donc soutenir le principe suivant :
+	\begin{principe}[Principe de Binarité (Radford 2006 :31)]
+		La fusion est une opération binaire.
+	\end{principe}
+
+\end{asav}
+\begin{prat}
+	On utilise deux types de notations pour simplifier la lecture :
+	
+	\begin{notation}[Notation en parenth\'sage]
+		Tout objet syntaxique de la forme \{x,y\} pourra être noté [x y]
+	\end{notation}
+	\ex. [ [La [mairie [de [la ville]]]] [a [nettoyé [la centrale]]] ]
+	
+	\ex. [Fier [de vous]]
+	
+	Notation arborescente 
+	\begin{notation}
+		Tout objet syntaxique de la forme \{x,y\} pourra être noté \Tree [ x y ]
+		\ex. \Tree [ [ La [ mairie [ de [ la ville ] ] ] ] [ a [ nettoyé [ la centrale ] ] ] ]
+		
+		
+		\ex. \Tree [ Fier [ de vous ] ]
+		 
+	\end{notation}
+	
+	
+	\begin{exo} Représentez la structure interne des énoncés de l'exercice précédent en utilisant :
+		\begin{enumerate}
+			\item la notation en parenth\'esage
+			\item la notation arborescente
+		\end{enumerate}
+	\end{exo}
+	
+\end{prat}
+\begin{asav}
+  Les notations arborescentes s'accompagnent de notions qu'il est utile de connaitre. En voici les principales.
+  \begin{defin}[Noeud]
+  	$ X $ est un n½ud ssi X est un objet syntaxique.
+  \end{defin}
+  En clair dans un arbre comme le suivant, toutes les lettres sont des noeuds.
+  \newcommand\puce{$ \bullet\ $}
+  \ex. \Tree [.A B [.C D [.E F G ] ] ]
+  
+  
+  
+  \begin{defin}[(Noeud) mère]
+  	X est le noeud mère de Y ssi Y est un constituant immédiat de X $ Y \in X $. On dit aussi que X domine immédiatement Y.
+  \end{defin}
+  
+  
+  \begin{defin}[(Noeud) fille]
+  	X est la fille de Y ssi X est un constituant immédiat de Y.
+  \end{defin} 
+  \begin{exo}
+  	Dans l'arbre en \Last, trouver tous les noeuds mères et leurs filles.
+  \end{exo}
+  
+  Cette métaphore a autorisée les concepts de petite fille et d'arrière petite fille etc. Nous définirons donc un concept générique de \textit{descendant}
+  \begin{defin}[(Noeud) descendant]
+  	X est un n½ud descendant de Y ssi $ X \subset Y $
+  \end{defin}
+  
+  \begin{defin}[Dominance]
+  	X domine Y ssi $ Y \subset X $ i.e. si Y est un descendant de X. On dit aussi X régit Y.
+  \end{defin}
+  
+  \begin{defin}[c-commande]
+  	X c-commande Y ssi 
+  	\begin{enumerate}
+  		\item Y est la soeur de X ou
+  		\item Y est dominé par Z et Z est  la soeur de X
+  	\end{enumerate}
+  \end{defin}
+\end{asav}
+  
+\subsection{Notion de mouvement} 
+  Considérons les données en \Next et \NNext\ : 
+  \ex. Passivation
+  	\a. Voix active : Pierre a mangé \motcle{la mangue} 
+    \b.	\motcle{La mangue} a été mangée par Pierre\hfill [Français]
+
+  \ex. Focalisation
+    \ag. bà t\textesh \={o} \motcle{h\={o}b\`{\i}-u}\\ 
+    3Pl.Acc porter.Acc2 roi-Def\\ 
+    « Ils ont porté le roi » 
+    \bg. \motcle{h\={o}b\`{\i}-u} m\textsubtilde{\={a}}-\textsubtilde{á}
+    bà t\textesh \={o}-ò\\ 
+    Roi-Def Comp-Foc 3Pl.Acc porter. Acc-Top\\ 
+    « C'est le roi qu'ils ont porté »\hfill [Aky\'e, Bogny 2017] 
+  
+  Il semble que \textit{la mangue} et \textit{h\={o}b\`{\i}-u} ait changé de place.
+\subsection{Fusion Externe vs Fusion Interne}
+  Que s?est-il passé avec « la mangue » et « ho?b??-u? » ? Ils ont apparemment quitté leur position d?origine (in situ) pour une position d?accueil. Mais comment le langage produit-il ce genre de structure ?
+  Analysons les phrases précédentes :
+  Si on applique la méthode apprise jusqu?ici, on a : 
+  \ex. \{\{La, mangue\}, \{que, \{pierre, \{a, \{mangée, t\}\}\}\}
+  
+  La configuration en \Last suppose que mangée a été fusionnée avec une trace t. Or si mangé a fusionné avec t, cela veut dire que la mangue n?est pas complément de mangée. Cela est contraire au concept même de mouvement puisque le mouvement suppose que le constituant déplacé occupait précédemment ce site et  le mouvement n'est qu'une transformation d?une phrase de base. En clair, la mangue a été fusionné avec mangée. Fusion ne peut pas avoir été appliquée t. 
+  
+  \newcommand\modjukru{m\textopeno \textdyoghlig ukru}
+  Que s'est-il donc passé ? Pour le comprendre prenons un exemple de focalisation en \modjukru\ (la focalisation dans les langues Kwa implique un mouvement du constituant focalisé)
+  \exg. \`{\textepsilon}k\'{n}\ind{i} àná ké m \`{\textepsilon}k\'{n}\ind{i} m\'{\textepsilon}l
+  à\\ 
+  Voir Foc Comp 1sg Voir.acc Mel Top\\ 
+  « J'ai vu effectivement Mel (litt. C\textquoteright est voir que j\textquoteright ai vu Mel) »
+  
+  Analysons maintenant la structure de \Last : 
+  \ex.  \{\`{\textepsilon}k\'{n}\ind{i},
+  \{àná, \{ké, \{m, \{\`{\textepsilon}k\'{n}\ind{i}, m\'{\textepsilon}l\}\}\}\} 
+  
+  Ce qui est intéressant avec \Last, c?est qu?à l?endroit où devait normalement se trouver la trace, se trouve une \motcle{copie} du constituant déplacé. Cela résout le problème soulevé par \ref{ex: la mangue}. Ce n?est la trace qui est fusionnée mais le constituant lui-même. Il est ensuite fusionné avec tout le syntagme dont il est extrait. Si « la mangue » n?apparait qu?une seule fois, c?est parce qu?il n?est pas prononcé.
+  On se retrouve avec deux possibilités pour le choix des (deux) arguments à fusionner.
+  \begin{itemize}
+  	\item Les deux arguments sont distincts l?un de l'autre i.e.  ils sont tirés du lexique
+    \item L'un des arguments est contenu dans l?autre i.e. déplacement
+  \end{itemize}
+A chacune de ces variantes, on a donné un nom( voir Chomsky 2005) :
+   \begin{description}
+   	\item[Fusion Externe] Les deux arguments sont distincts l?un de l?autre i.e.  Ils sont tirés du lexique. 
+   	\item[Fusion Interne] \textit{ ou réfusion (cf. e.g. Niina Zhang 2004)} L'un des arguments est contenu dans l?autre i.e. déplacement.
+   \end{description}
+   \begin{prat}
+   	On utilise plus les traces : les constituants déplacés de même que les constituants vides sont notés entre chevrons ou barrés. T ne fait pas partie du lexique. 
+   	
+   	Soit t une trace, si t est une entrée lexicale alors t possède des traits syntaxiques Syn, sémantiques Sem et phonologiques Phon et que ceux-ci sont fixés une fois pour toute. Si les traces sont exclues dans le programme minimaliste, comment sont perçues les catégories vides ? Elles sont perçues  comme des copies des constituants déplacés.
+   \end{prat}
+  
+\section{Problème d'étiquetage}
+  \subsection{Motivations pour une opération autonome}
+  Fusion ne gère pas les étiquettes. Deux raisons motivent cette perspective : 
+  	\paragraph{Les structures ne portent pas intrinsèquement d'étiquettes} 
+  Dans les phrases suivantes, où voyez-vous des DP, CP, TP, etc. ? Nulle part !
+  \ex. Jean a vendu de la banane
+  
+  \ex. La fille de mon oncle est en voyage
+  
+  \ex. La maison que j?ai vendue me plaisait beaucoup
+  
+  Les étiquetés sont une nécessité théorique, pas empirique.
+  
+  \paragraph{X-Barre fait de mauvaises prédictions} 
+    \ex. \Tree [.XP Spec [.X\1  X Comp ] ]
+    
+    [Quel bus $ <C> $ tu prends] DP ou CP ?
+    
+    \ex. [\lab{CP} [\lab{DP} Quel bus] <C> tu prends] ? : CP
+    
+    \ex. Je me demande [\lab{DP} [\lab{DP} quel bus] tu prends] : DP
+    
+    En \LLast\ l'étiquette de [Quel  bus <C> tu prends] est déterminée par la tête, comme le prédit X-Barre. 
+    Mais en \Last\ l'étiquette de [Quel bus tu prends] est déterminée par le spécifieur, contrairement à ce que prédit X-Barre.
+    
+    \subparagraph{Certaines têtes ne projettent pas}
+    De quelle catégorie est \Next\ :
+    \ex. 
+      \a. Kouassi et Mamadou
+      \b. Kouassi lit et Mamadou rit
+    
+    La plupart des travaux sur la coordination, admettent que les conjonctions sont têtes des syntagmes « coordinatifs » (cf. De Groot 1959, Munn 1993, Kayne 1994, Abeille 2003, De Vries 2001, Chomsky 2013, Akpoué 2017, Allou 2017, Krivochen 2015, etc. pour les preuves empiriques). En adoptant cette approche, X-Barre prédit ce qui suit :
+    \ex.
+      \a. [\lab{ConjP} [\lab{DP} Kouassi] [\lab{Conj'} [[\lab{Conj} et] [\lab{DP} Mamadou]]]]
+      \b. \Tree [.{ConjP} [.{DP\\Kouassi} ] [.{Conj'} [.{Conj\\et} ] [.{DP\\Mamadou} ] ] ]
+
+   Mais \textit{Kouassi et Mamadou} et \textit{Kouassi lit et Mamadou rit} sont-ils réellement de la même catégorie : des ConjP ? Comment savoir ? Des séquences de la même catégorie ont la même distribution i.e. ils sont interchangeables sans que la phrase soit agrammaticale. Qu'en est-il de \LLast\ ?
+   \ex. Corpus 1
+   \a.	[\lab{?} Kouassi et Mamadou] mangent.
+   \b.	[\lab{DP} Ils] mangent.
+   \c.	[\lab{DP} Les deux amis mangent] mangent.
+   \d.	* [\lab{?} Kouassi lit et Mamadou rit] mangent.
+   
+   \ex.	Corpus 2
+   \a.	Le fait que [\lab{?} Kouassi lit et Mamadou rit] est désolant.
+   \b.	Le fait que [\lab{IP} ce père aime sa fille] me réjouit.
+   \c.	Le fait que [\lab{IP} mon frère chante] enchante nos parents.
+   \d.	* Le fait que [\lab{?} Kouassi et Mamadou] est une bonne chose.
+   
+   Les énoncés en \Last et \LLast montrent que [\lab{?} Kouassi lit et Mamadou rit] appartient au même paradigme que les IP tandis que [\lab{?} Kouassi et Mamadou] appartient au même paradigme que les DP. Il faut donc assumer ce qui suit :
+   \ex.	
+   \a.	[\lab{DP} Kouassi et Mamadou]
+   \b.	[\lab{IP} Kouassi lit et Mamadou rit]
+   
+   Or si tel est le cas (cf. Abeille 2003 pour une conclusion similaire\footnote{Mais les conjonctions ne sont pas les seules têtes à ne pas projeter, il y a aussi la préposition de en français cf. Abeille et al 2003, les racines e.g. verbes, noms cf. Marantz 1997, et même T(emps) cf. Chomsky 2013}
+\subsection{Un algorithme de recherche minimale}
+
+\section{Accord}
+  
+  \begin{quote}
+  	« Dans la grammaire traditionnelle, on parle d?accord lorsque la présence d?un objet syntaxique dans une structure impose qu?un autre objet grammaticalement lié au premier apparaisse sous une forme particulière dans la même structure, c?est-à-dire partage avec lui certaines spécifications »
+  	
+    [Rouveret 2015 :189]	
+  \end{quote}
+  
+  Pour mieux appréhender la notion d?accord, considérons les phrases ci- dessous.
+  \ex. 	
+  \a.	Les mangues sont tombées sur le toit
+  \b.	* Les mangues sont tombé sur le toit
+  \c.	Nous  décrivons les langues 
+  \d.	* Nous  décrit les langues 
+  
+  
+  Pourquoi certaines phrases  ne sont- elles pas correctes en \Last\ ?
+  
+  Réponse : parce qu?il  n?y a pas de connexion syntaxique  entre le sujet et le verbe. Cette relation syntaxique est appelée « Accord ».
+  
+  Dans le PM, l'accord (Agree)  repose sur une vérification de traits ininterprétables contenus dans la dérivation.  Il est motivé par des conditions de lisibilité imposées aux interfaces. Parmi ces motivations, nous  pouvons évoquer :
+  \begin{itemize}
+  	\item La satisfaction du Principe de l?interprétation intégrale (Principle of Full Interpretation) :
+  Tout ce qui arrive aux interfaces doit être interprété.
+    \item Exigence de vérification (Checking Requirement)
+  Les traits ininterprétables doivent être vérifiés. Une fois vérifiés, ils peuvent être effacés.
+  \end{itemize}  
+  \begin{flushright}
+  	[Adger 2003]
+  \end{flushright}
+  C'est en raison de ces conditions que la relation d'accord va être déterminante dans l?approche minimaliste.
+  
+  Définition : L'accord est l'opération qui permet de connecter deux objets porteurs de trait de même nature. (Puskas 2013).
+  
+  \subsection{Critère d'accord}
+  L?opération d?accord va donc permettre de mettre en relation de deux traits pour pouvoir éliminer un trait ininterprétable. Une relation d?accord s?établit entre deux objets syntaxiques X et Y si et seulement si :
+  
+  \begin{enumerate}
+  	\item X et Y portent un trait F
+  \item Le trait F de X ou de Y est ininterprétable
+  \item  le trait F de X et le trait F de Y sont de même nature.
+  \item  X c-commande Y
+  \item X et Y sont dans une relation de localité.
+  \end{enumerate}
+  
+  \paragraph{Explication du critère}
+  
+  X et Y représentent les constituants qui doivent entretenir une relation d?accord. 
+  
+  1. 
+  Les deux constituants mis en relations d?accord porte des traits F.  Soit  F les traits de nombre, de genre ou de personne.
+  \ex. [les enfants] [arrivent]
+  
+  Le DP (les enfants) porte un trait [nombre : pluriel, personne : 3pers, genre :?]
+  
+  Le VP  arrivent)  porte un trait [nombre : pluriel, personne : 3pers, genre :?]
+  
+  2. 
+  Le trait F d?un des constituants (X ou Y) est ininterprétable. i.e. le trait F de l?un est ininterprétable et le trait F de l?autre est interprétable.
+  \ex. le traits F de DP (les enfants) sont interprétables et les traits F de IP (ent) portés par V  sont ininterprétables. 
+  
+  3. 
+  Les traits de DP et de  IP doivent être identiques
+  
+  \noindent 4.  
+  X domine Y
+  \ex. Les enfants
+  
+  Le DP domine le NP 
+  
+  \noindent 5. si X et Y ne sont pas trop distants
+  
+  \paragraph{Application}
+  
+  \ex. les mangues sont tombées
+  
+  Dans la phrase (24a). Le DP [les mangues] encode des traits de nombre (pluriel) et  genre (féminin). Le  verbe « tomber »  porte une flexion \textit{ées} qui encode également les mêmes traits que le DP.  Les traits de nombre et de genre, portés par le DP [les mangues]  sont interprétables (on les notés \textit{i}). Les  traits  portés par la flexion du verbe sont ininterprétables (on les notés \textit{u})  car un  verbe tomber  n'a pas de traits \textit{phi} . Les traits syntaxiques ininterprétables sont soumis une condition de bonne formation. 
+  
+  \subsubsection{Notion Cible - Sonde}  
+  
+  Cette opération  d?accord s?est développée par l?introduction des notions de  sonde et cible, valuation, matching.. 
+  
+  Une Sonde est  un item lexical porteur de trait(s) ininterprétables
+  
+  \textbf{Cible} item lexical porteur de trait(s) valué(s) ayant le même attribut que ceux/celui de la sonde.
+  
+  Les traits F de  sonde cherchent une cible portant des traits identiques F pour entretenir une relation d?accord : cela est appelé appariement ou matching en anglais. Une fois l?appariement est fait, les traits de sonde sont vérifiés : cette opération est appelée valuation (vérification).
+  
+  \paragraph{EPP (Principe de Projection Etendue)}
+  
+  Ce principe a été élaboré en faveur des sujets nuls dans les constructions infinitives et gérondives. Il dit que toute phrase doit avoir un sujet et le sujet sous-entendu de ces constructions est PRO. 
+  
+  Le PM considère EPP comme des traits DP ininterprétables contenus dans T déclenchant ainsi le  déplacement du syntagme déterminant en Spec-TP pour être légitimé. 
+  
+  \ex. viennent au village les paysans.
+  
+  cette phrase est dominé par un TP. Or T contient des traits \textit{u}D e.g [ pluriel, 3pers]
+  hébergés par le suffixe ent sur le verbe. Etant la sonde, elle va donc chercher des traits interprétables correspondants dans la phrase appelés cible. si on examine bien la phrase, Le syntagme déterminant ayant des traits dans cette phrase est « Les paysans ». La sonde ayant des traits ininterprétables forts impose le déplacement de « les paysans » en position Spec- TP pour être légitimé i.e. en position de sujet de T. Ce qui donne la phrase suivante :
+  
+  \ex. Les paysans viennent au village.
+  
+\section{Théorie des phases}
+
+\section{Approche Cartographique}
+
+\subsection{Généralités}
+   Un programme \`a l'int\'erieur du PM qui se fonde sur l'id\'ee que
+  \begin{itemize}
+  	\item dans les langues naturelles, un type de syntagme donn\'e (e.g. DP, IP, CP) est construit sur un mod\`ele sous-jacent transversal (i.e. partag\'e par toutes les langues du monde).
+  	\item les variations constat\'ees en surface sont dus \`a des d\'elocalisations (d\'eplacements ou encore mouvements) et/ou \`a des categories vides (i.e. positions syntaxiques non marqu\'ees). 
+  \end{itemize}
+\subsection[La couche IP (1)]{Structure de la proposition finie : introduction à la couche IP}
+  Commençons avec le cas de IP, ce qui nous permettra en m\^eme temps de nous familiariser avec la notion de t\^ete \'eclat\'ee.	
+  
+  On a pens\'e, \`a une certaine p\'eriode, que la t\^ete de la phrase est I -- une cat\'egorie souvent vide qui contient les traits de \textit{temps}, \textit{mode}, \textit{aspect}, \textit{personne}\footnote{responsable de l'accord sujet-verbe}. La structure de la phrase se pr\'esentait alors comme suit : 
+  
+  \ex. 
+  \Tree [.IP [.DP ] [.I' [.I	] [.VP [.V ] [.DP ] ] ] ]\hfill Structure classique de IP
+  
+  Mais il arrive que dans certaines langues, les propri\'et\'es contenues dans I se trouvent ventil\'ees dans plusieurs morph\`emes distincts qui peuvent se contracter.
+  
+  \ex.\label{itm.bau} Baoul\'e 
+  \ag. bl\=a \`mm\`e s\`u b\=a\\
+  femme \textsc{d\'ef.3pl} \textsc{prog} venir\\
+  ``Les femmes arrivent.''
+  
+  En \Last , nous avons deux \'el\'ements qui jouent le r\^ole de I. Pour les distinguer, on choisit de les appeler par leur nom : \textit{Asp} pour l'aspect et \textit{Suj} -- ou Subj(ect) -- pour le pronom sujet. Cela nous donne la repr\'esentation suivante :
+  \ex. 
+  \Tree [.SujP [.DP\\{bl\=a m\`u} ] [.Suj' [.Suj\\b\`e ] [.AspP [.Asp\\s\`u ] [.VP\\b\=a ] ] ] ]\hfill Repr\'esentation arborescente de \LLast
+  
+  Dans cette m\^eme logique, il est d'usage de pr\'evoir une projection pour les morph\`emes de temps, de mode, et de quelqu'autre morph\`eme grammatical que l'on rencontre. De façon g\'en\'erale, on admet la structure suivante :  
+  
+  \ex.  Repr\'esentation arborescente de \ref{itm.bau}\\
+  \Tree [.SujP [.DP\\{bl\=a m\`u} ] [.Suj$'$ [.Suj\\b\`e ] [.TP [.$<$T$>$ ] [.ModP [.$<$Mod$>$ ] [.AspP [.Asp\\s\`u ] [.VP\\b\=a ] ] ] ] ] ]\hfill 
+  
+  N.B: La projection SujP est tr\`es souvent absente dans les descriptions. De m\^eme la projection TP pour les langues africaines probl\'ematique puisqu'elle suppose que le temps est grammaticalement dans ces langues tandis que la quasi totalit\'e des chercheurs africanistes soutiennent le contraire. Il est donc courant de ne pas mentionner cette projection dans la descriptions des phrases dans les langues africaines. 
+  
+  \subsubsection{AgrO/Obj et les langues du type SOV}
+  Dans une langue de type SOV, les phrases pr\'esentent un ordre dans lequel le sujet pr\'ec\`ede l'objet qui \`a son tour pr\'ec\`ede le verbe i.e. Sujet - Objet - Verbe. 
+  \ex.\label{itm.diou} Dioula
+  \ag. \`al\'i b\`e m\'us\`a w\`el\`e l\'a\\
+  Ali \textsc{prog} Moussa appeler \textsc{prog}\\
+  ``Ali appelle Moussa''
+  
+  Les repr\'esentations propos\'ees jusqu'ici permettent de d\'eriver l'ordre SVO. Qu'en est-il de l'ordre SOV ? Nous avons dit que les variations \'etaient dus \`a des \textbf{mouvements} et/ou des cat\'egories vides. C'est le cas ici. En fait, l'objet se d\'eplace dans le sp\'ecifieur d'une t\^ete situ\'ee entre le \textit{VP} et \textit{Asp} : Obj\footnote{Cette projection correspond AgrO -- que l'on rencontre dans certains travaux.}. En fait, ce n'est pas universel car, en realite, le positionnement de l'objet par rapport au verbe peut aussi bien être paramétré de façon phonologique cf. adg-sven2011\footnote{Nous y reviendrons au cours de l'atelier de phonologie}. Pour ce qui est des langues Mand\'e, il y a des raisons de penser qu'il y a bien un mouvement impliquant une tête fonctionnelle située entre $ Asp $ et $ VP $. En effet, il est vraisemblable de penser qu'il y a d\'eplacement de l'objet du verbe quand on considère des exemples comme \Next ci-dessous:
+  \exg. k\=o k\`i\=e k\'e\'\Ng~ \g\nas{\`\ee} p\'i\'e\\
+  1PL.PRET chimpanzé nid voir PL.\\
+  `Nous avons vu plusieurs nids de chimpanzés.' \hfill [Mano, Khachaturyan 2014:117; ex. (\textsc{iii}.57)]  
+  
+  Khachaturyan fait remarquer que \textit{p\'i\'e}, ``\textit{dans l'exemple (\textsc{iii}.57) [...] se refère à l'objet. 
+  	Généralement ce marqueur s'emploie à l'extérieur du groupe nominal mais il
+  	peut également être employé à l'intérieur.}'' (\textit{idem}) 
+  Cela signifie qu'en r\'ealit\'e, \textit{k\`i\=e k\'e\'\Ng~}, le complément de \textit{p\'i\'e}, a été extrait de sa position d'origine (cf. \Next).
+  \ex. \Tree 
+  [.SubjP DP [ 
+  [.{Subj\\$\left[\begin{array}{l}
+  	\textsc{pers:1pl},\\
+  	\textsc{prf}:-
+  	\end{array}\right]$\\k\=o}   ] 
+  [.ObjP [.{DP\\{k\`i\=e k\'e\'\Ng~}} ] [ {Obj\\$\left[\begin{array}{l}
+  	\textsc{pers:3pl}\\
+  	\end{array}\right]$} [.$v$P OP.SUJ [ $v$ [.VP [.{V\\ \g\nas{\`\ee}} ]  [.QP [.{Q\\p\'i\'e} ] [.{DP\\t} ] ] ] ] ] ] ] ] ]
+  
+  $ Subj $ ici semble avoir les traits de personne et d'aspect comme en Aky\'e.
+  
+  \ex.    Repr\'esentation arborescente de \ref{itm.diou}\\
+  \Tree [.SujP [.DP \`al\'i ] [.Suj' [.Suj ] [.AspP [.Asp {b\`e ... l\'a} ] [.ObjP [.DP m\'us\`a ] [.Obj' [.$<$Obj$>$ ] [.VP [.V w\`el\`e ] [.DP $<$m\'us\`a$>$ ] ] ] ] ] ] ]\hfill 
+  
+\subsection[La couche CP]{La p\'eriph\'erie gauches de la phrase}
+
+\exg. Il dit de partir\\
+Il dire.Pres Fin partir\\
+``Il dit de partir''\hfill [Fran\c cais ivoirien]
+
+\exg. Je ne sais pas si il va venir quand\\
+Je Neg savoir.Pres Part.Neg Int il Fut venir quand\\
+``Je ne sais pas quand il viendra.''\hfill [Fran\c cais ivoirien]
+
+Nous voyons avec \Last\ et \LLast\ que \textit{si} et \textit{de} jouent le r\^ole de compl\'ementeur. En effet, ils apparaissent dans la m\^eme position que \textit{que} en \Next.
+
+\exg.\label{ex:que}Je dis que je ne sais pas\\
+Je dire.\textsc{pr\'es} \textsc{comp} je \textsc{n\'eg} savoir.\textsc{pr\'es} \textsc{partn\'eg}\\
+``Je dis que ne sais pas.''
+
+Mais tout comme, plusieurs \'el\'ements de type I peuvent co-occurer dans la m\^eme phrase, il en va de m\^eme pour les \'el\'ements de type C.
+
+\exg. Don, je ne sais pas si de partir\\
+Donc Je \textsc{n\'eg} savoir.\textsc{pr\'es} Part.\textsc{n\'eg} \textsc{int} \textsc{fin} partir\\
+``Je ne sais pas s'il faut que je parte.''\hfill [Fran\c cais ivoirien]
+
+Ainsi donc comme pour IP, il faut \'eclater CP.
+
+\ex. \Tree [ \textit{si}  [ \textit{de}  SubjP ] ]\hfill [ \textit{si}  [ \textit{de}  SubjP ] ] 
+
+\subsubsection{P\'eripherie gauche, force et finitude}
+Notion de p\'eriph\'erie gauche : en \ref{ex:que}, tout ce qui est \`a gauche de ``je ne sais pas'' constitue la p\'eriph\'erie gauche de cette proposition\footnote{une proposition est le plus petit objet syntaxique contenant un sujet, un verbe et, selon le cas, un objet.}
+
+En \Last, on s'aper\c coit que la p\'eriph\'erie gauche de la phrase en FI est d\'elimit\'ee par deux marqueurs : \textit{si} et \textit{de}\footnote{Le test suivant [test de coordination] montre que ``si de partir'' forme un constituant:
+	\exg. [[si de partir] wa, [si de rester] wa] je sais pas.\\
+	\textsc{si} de partir \textsc{con} \textsc{si} de rester \textsc{con} je savoir.\textsc{pr\'es} \textsc{n\'eg}\\
+	``Je ne sais pas s'il faut partir ou rester.'' 
+	
+}. \textit{si} indique le type de phrase i.e. interrogative. Cette notion traditionnelle de \textit{type de phrase} a pris un nouveau nom : \textit{Force illocutoire} ou \textit{Force} tout court. \textit{si} est donc un marqueur de Force interrogative. \textit{de} quant \`a lui, indique que la proposition est \`a un temps non fini\footnote{les temps non finis sont l'infinitif et le g\'erondif, principalement.} i.e. l'infinitif. Il alterne avec \textit{que} qui requiert une proposition \`a temps dit fini i.e. conjugu\'e. \textit{de} et \textit{que} sont donc ce qu'on appelle des marqueurs de \textit{finitude} i.e. ils nous disent si on a affaire \`a une proposition \`a temps fini ou non fini. La position de ces marqueurs marque la fin de la p\'eriph\'erie gauche de la phrase. L'ancien CP en \Next\ devient \NNext.
+\ex. \Tree [.CP C SujP ]\hfill [.CP C SujP ]
+
+\ex. \Tree [.ForceP {Force\\{\it si}} [.FinP {Fin\\{\it de}} {SujP\\{\it partir}} ] ]
+\hfill [.ForceP {\it si} [.FinP {\it de} [.SujP \textit{partir}] ] ]
+
+\subsubsection{La topicalisation}
+Le topique est, dans une phrase l'\'el\'ement duquel il est fait un commentaire. Dans la communication ordinaire, il s'agit g\'en\'eralement du sujet, cf. \Next.
+\exg. go de Poy l\`a, elle est partie \`a Bingu\'e\\
+femme de Yopougon \textsc{d\'et} elle aux partir \textsc{loc} Europe\\
+``La jeune fille qui habite \`a Yopougon est partie en Europe.''
+
+En \Last\ en effet, c'est de la \textit{go de Poy} dont il est dit qu'elle est partie en Europe. Ici, \textit{go de Poy} s'av\`ere \^etre le sujet de \textit{partie}. Mais, il peut arriver que le topique soit l'objet du verbe -- cf. \Next\ -- ou m\^eme un circonstant -- cf. \NNext.
+\exg. \textit{Son} \textit{fils} {l\`a}, il le gatte fa\c con\\
+Son fils \textsc{d\'et} il le choyer.\textsc{pr\'es} tellement\\
+``Il choie beaucoup son fils.''
+
+\exg. \textit{hier} l\`a, je suis all\'e jobber un peu\\
+hier \textsc{det} je \textsc{aux} aller.\textsc{acc} travailler un peu\\
+``Hier, je suis all\'e travailler un peu.''
+
+En fait, \textit{l\`a} est un marqueur de Topique -- tout comme Subj, cf. Rizzi ??, Chomsky 2013 en ce qui concerne T. Les marqueurs de topique indiquent ont pour fonction, informellement parlant, d'indiquer le constituant topicalis\'e. M\^eme s'il semble, \`a partir des donn\'ees sus mentionn\'ees que \textit{l\`a} soit une sorte de d\'eterminant, ce qui laisserait penser que qu'il est attach\'e au groupe nominal. Une telle approche est tenable -- et nous allons voir pourquoi quand nous aborderons la structure du syntagme nominal. Toutefois, le fait que tous les constituants topicalis\'es, selon le corpus fourni ici, apparaissent dans une position unique quelle que soit leur nature. Et que \textit{l\`a} ne change pas de position sugg\`ere, \`a priori que \textit{l\`a} domine SujP. Mais, avons des donn\'ees plus convaincantes ? Prenons le cas de l'exemple \Next\ :
+\exg. \textit{Il} \textit{parlaitparlait} l\`a djaa il vaut rien.\\
+Il \textsc{red}-parler.\textsc{imparf} \textsc{top} \textsc{con} il valoir.\textsc{pr\'es} rien\\
+``Il se vantait beaucoup ; pourtant, il ne vaut rien.''
+
+En \Last, c'est tout une phrase -- ``il parlaitparlait'' -- qui est topicalis\'ee, i.e. qui a le statut de topique. A ce niveau de la r\'eflexion, il semble donc raisonnable de d'adopter l'analyse suivante :
+\ex. \Tree [.TopP SujP [.TopP Top SujP ]  ]\hfill [.TopP SujP [.TopP Top SujP ]  ]
+
+Cependant, \textit{Top} apparait ainsi comme un type particulier de compl\'ementeur. Il faut donc voir quelle est sa position par rapport aux \'el\'ements du type C. Puisque \textit{Force} et \textit{Fin} delimitent la p\'eriph\'erie gauche de la proposition, alors il faut penser que Top est situ\'e quelque part entre ces deux t\^etes\footnote{Pour des preuves empiriques, voir Rizzi 1997}.
+\ex. \Tree [.ForceP Force [.TopP SujP [.TopP Top [.FinP Fin  SujP ] ]  ] ]
+
+\subsubsection{La focalisation}
+La focalisation est une strat\'egie qui 
+\subsubsection{Cartographie de la p\'eriph\'erie gauche de la phrase}
+
+\begin{details}
+[Périphérie gauche du groupe verbal]
+
+La couche IP (2)
+\end{details}
+
+\subsection{Structure du groupe nominal}
+
+\subsubsection{L'hypothèse de DP : parallélisme entre le groupe nominal et la phrase}
+
+\subsubsection{La périphérie gauche du nom : la couche DP (1)}
+
+\subsubsection{Le domaine du nom}
+
+\subsubsection{La couche DP (2)}
+
+\subsection{Problèmes de coordination}
+Comment analyser les  séquences telles que 
+\ex. Affou\'e et Aya
+ 
+\ex. Aya, Affou\'e et Marl\`ene 
+
+Tel est l'objet de cette section. Mais nous allons nous intéresser ici seulement à deux problèmes que posent les structures coordonnées : (i) L'archi\-tecture des séquences coordonnées et (ii) leur étiquetage.
+
+\subsubsection{L'architecture des séquences coordonnées}
+  A travers les temps et les courants, plusieurs analyses ont ete proposées pour rendre compte de la structure basique des coordonnés. On peut les regrouper en deux categories analyse parataxique (cf. \Next)et analyse hypotaxique (cf. \NNext) :
+  \ex. Analyse parataxique\\
+    \Tree [.DP [.{DP\\Affou\'e} ] [.{\&\\et} ] [.{DP\\Aya} ] ] 
+  
+  \ex. Analyse hypotaxique (style X-barre)\\
+    \Tree [.\&P [.{DP\\Affou\'e} ] [.{\&\1} [.{\&\\et} ] [.{DP\\Aya} ] ] ]
+  
+  \LLast n'est tenable pour deux raisons au moins :
+  \begin{itemize}
+  	\item Fusion est binaire
+  	\item L'existence de données telles que 
+  	  \ex. Et ton père ? (et ta mère ?)
+  	 
+  \end{itemize}
+  
+  Il ne reste plus qu'\`a tester \LLast. Nous allons essentiellement limiter nos tests aux langues Volta-Congo et Mand\'e. 
+  
+  \paragraph{Les conjonctions comme tête} Il y a un fait intéressant \`a travers les langues naturelles en ce qui concerne la coordination : elles manifestent souvent une polysynd\`ete i.e. il y a autant de conjonctions que de conjoints. C'est le cas aussi dans les langues qui nous intéressent ici.
+  
+  \exg.\label{ex:yapo.api.aman}j\`ap\=o \motcle{\'e} \`ap\={\i} \motcle{\'am\n{\'a}}\\
+  Yapo \textsc{et} Api \textsc{morph}\\
+  ``Yapo et Api"\hfill [Akye, Kwa Akpoue 2017slao]
+  
+  \exg.\label{ex:paperno}[m\n{\'i} \motcle{n\n{\`a}} d\'e \motcle{l\'o}] f\n{\=\ee} k\'a g\n{\'u}\n{\`a} k\=a wl\'a w\=e fl\n{\'\oo}\n{\=\oo} n\n{\'a}? \\
+  2sg et qui avec Rel 2pl:Pst+ rester 2pl maison la-bas aujourd'hui Top\\
+  ``Avec qui es-tu rest\'e \`a la maison aujourd'hui ?''\\ (litt. ``Toi et qui que vous êtes restés dans ta maison aujourd'hui ?'').\hfill [Beng, Mande Paperno 2014] 
+  
+  \ex.\label{ex:coordkouz}
+  \ag. g\={e}\`i (\'{\textepsilon})kè pód\={e} \\
+   Gehi et Pode \\
+   ``G\'ehi et Pod\'e''
+  \bg. g\={e}ì-è s\={e}ri-è (\'{\textepsilon})kè
+  pód\={e} \\
+  G\'ehi-et S\'eri-et et Pod\'e\\
+  ``G\'ehi, S\'eri et Pod\'e''
+  \bg. g\={e}ì àlé zùkú\\ 
+  G\'ehi ou Zoukou \\
+  ``G\'ehi ou Zoukou''
+  \bg. g\={e}ì-àé s\={e}ri-àé (\'{\textepsilon})kè
+  pód\={e}\\ 
+  G\'ehi-ou S\'eri-ou ou Pod\'e\\
+  ``G\'ehi, S\'eri ou Pod\'e'' \hfill [Kouzi\'e, Krou (Adapt. Allou 2017)\footnote{respectivement ex. (274-a), (276-a), (277-a) et (280-a) aux pages 256, 257, 258 et 260.}]
+  
+  \exg.\label{ex:jru.ke.puo}\textbardotlessj r\'u \motcle{k\=e} p\=\textupsilon\'\textopeno{} \motcle{(k\=e)} \\
+  soleil \textsc{et} vent (\textsc{et}) \\
+  ``Le soleil et le vent''\hfill [Wob\'e,  (Akpou\'e 2016ci)]
+  
+  \exg.\label{ex:gouro-3conjoints}s\`e\'i\'i \motcle{(k\'o\'o)} m\`ar\'i\'i \motcle{k\'o\'o} \textipa{z}\textsubtilde{\'a}\textsubtilde{\'a} \motcle{k\'o\'o} \\
+  S\'ehi (\textsc{et}) Marie \textsc{et} Jean \textsc{et}\\
+  ``S\'ehi, Marie et Jean"\hfill [Gouro, Mande, Akpoue 2017slao]
+  
+  Les exemples ci-dessus présentent deux types de polysyndète : polysyndète avec conjonctions distinctes (\ref{ex:yapo.api.aman} \`a \ref{ex:paperno}) et polysyndète avec redoublement de la conjonction (\ref{ex:coordkouz}\footnote{La difference morphologique constat\'ee est due \`a des changements morphonologiques cf. Allou 2017} \`a \ref{ex:gouro-3conjoints}). 
+  Concentrons-nous d'abord sur la deuxième catégorie et surtout sur les exemples en \ref{ex:jru.ke.puo} et \ref{ex:gouro-3conjoints}. Le premier réflexe, en analysant ces données serait de postuler un coordinatif discontinu. Mais le fait que ces morphèmes peuvent être élidés dans certains cas montre qu'il s'agit de morphèmes autonomes distincts. Ajout\'e \`a cela, il y a la position de la conjonction par rapport au conjoint. 
+  Dans la plupart des exemples convoqu\'es ici, les conjonctions se placent après les conjoints ce qui est typique des têtes finales. Dans le cas du kouzi\'e, il y a que des donn\'ees empiriques montrent que cette langue est une langue \`a tête initiale de façon sous-jacente et que la postposition de la tête est souvent due \`a un mouvement de son complément. C'est ce que nous constatons avec les cas de coordination ternaire en kouzi\'e (cf. \ref{ex:coordkouz}). Tout ceci nous laisse avec deux conclusions :
+  \begin{enumerate}
+  	\item Les conjonctions sont têtes de syntagme
+  	\item Chaque conjonction domine un seul conjoint dans une séquence coordonnée. 
+  \end{enumerate}
+  
+  \paragraph{Les conjoints sont adjoints} Avant de pouvoir proposer une structure interne pour la coordination, un autre point doit être analysé la relation syntaxique qui lie les conjoints i.e. sont-ils inclus les uns dans les autres ou sont-ils adjoints les uns autres. Notre hypoth\`ese de travail est qu'ils sont adjoints les uns aux autres. 
+  Cette hypoth\`ese a \'et\'e initialement motiv\'ee par le fait que les conjoints ne pas en position d'argument. En effet, si les (i.e. inclus) les uns dans les autres, une séquence coordonnée ne peut-être possible que si le conjoint enchâssé se trouve en position de complément du dernier constituant sélectionné. 
+  \ex. \Tree [ \& [ X [ Y  [ \& ZP ] ] ] ]  \hfill [\& [X [Y [\& ZP]]]] 
+  
+  Par exemple, pour la coordination de DP, on devrait avoir :
+  
+  \ex. \Tree [ \& [.DP D [.NP N  [.DP \& DP ] ] ] ]  \hfill [\& [\lab{DP} D [\lab{NP} N [\lab{DP} \& DP]]]]     
+  
+  Appliquons ce schéma aux donn\'ees de l'aky\'e :
+  \ex. \Tree [ [.{\&\\ \'e} ] [.DP D [.NP [.{N\\j\`ap\=o} ]  [ [.{\&\\\`am\n{\'a}} ] [.{DP\\\`ap\'i} ] ] ] ] ]  
+  \hfill [\lab{DP} \'e [\lab{DP} D [\lab{NP} j\`ap\=o [\lab{DP} \`am\n{\'a} [\lab{DP} \`ap\'i]]]]]
+  
+  La structure en \Last ne correspond pas aux donn\'ees que nous poss\'edons. Comme nous l'avons vu en \ref{ex:yapo.api.aman}, la conjonction est postposée aux conjoints. Puisque les groupes nominaux aky\'e sont têtes initiales cf. Bogny 2009, il faut penser qu'il y a eu mouvement des conjoints dans Spec-\& cf. Akpoué 2017, Allou 2017. 
+  \ex. \Tree [ [.{DP\\\`ap\'i} ] [ [.{\&\\\`am\n{\'a}} ] [.{DP\\<\`ap\'i>} ] ] ] 
+    \hfill [[\lab{DP} \`ap\'i] [[\lab{\&} \`am\n{\'a}  [\lab{DP} $ < $\`ap\'i$ > $]]]]
+  
+  \ex. \Tree [ [.{DP\\j\`ap\=o} ] [ [.{\&\\\'e} ] [.<DP> [.{NP\\<j\`ap\=o>} ] [.D\1 [.{D\\$ \emptyset $} ] [.<NP> [.{N\\j\`ap\=o} ] [ [.{DP\\\`ap\'i} ] [ [.{\&\\\`am\n{\'a}} ] [.{DP\\<\`ap\'i>} ] ] ] ] ] ] ] ]
+  
+  \Last met en évidence le problème que pose une analyse qui imbrique les conjoints les dans les autres. En effet, par définition, si un constituant bouge, il bouge avec tout ce qu'il contient. Or, le NP j\`ap\'o a boug\'e dans Spec-D sans entrainer le mouvement de [\`ap\'i \`am\n{\'a}] qui est cens\'e être son complément. Cela suggère que [\`ap\'i \`am\n{\'a}] n'est pas constituant du DP j\`ap\=o mais est plutôt adjoint \`a celui-ci. En effet, les adjoints sont insensibles \`a ce genre de mouvement cf. Oseki. Et de toute façon, les noms ne s\'electionnent pas (i.e. n'exigent pas) de compléments cf. e.g., Adger 2010.
+   
+  On peut convoquer un autre argument que j'appelle : test de coordination discontinue.  Il y a que dans certaines langues, une séquence [\& XP] peut être séparée du reste de la structure coordonnée\footnote{Voir aussi Abeille 2003 pour le français}.  
+  \ex. 
+    \ag. Io [ma] tu haga [ma Polie]\\
+    \textsc{fut} \textsc{\textbf{1du}.excl} descendre pecher \textsc{conj} Polie\\
+    \gmg Polie et moi allons \`a la pêche. \gmd \\
+    (\textit{lit.} nous\ind{2} incluant Polie allons a la pêche.)
+    \bg. [Hla] u oda mwa [ma hlileny thaxamo].\\
+    \textsc{3pl} \textsc{pfc} aller \textsc{act} \textsc{coord} ces2.\textsc{deict} femme\\
+    \gmg Il est parti avec ces deux femmes \gmd
+    \\
+    (Ou:) \gmg Lui et ses deux femmes sont partis \gmd\ 
+    (\textit{lit.} Ils sont partis y compris ses deux femmes.)\hfill [N\^el\^emwa, cf. Bril 2004, 2010] 
+  
+    En r\'esum\'e, dans une structure coordonnée :
+    \begin{itemize}
+    	\item chaque conjoint a pour tête une conjonction -- même si elle n'est pas marqu\'ee,
+    	\item les séquences [\& XP] sont adjointes les unes aux autres
+    \end{itemize}
+    On a donc la représentation suivante :
+    \ex. \Tree [ [ \& XP ] [ \& YP ] ]\hfill [ [ \& XP ] [ \& YP ] ]
+     
+  \paragraph{L'interaction avec le focus} En ce qui concerne la polysyndète impliquant des conjonctions différentes, Akpoué 2017slao, suivant De Vries 2001, traite les conjonctions finales comme des marqueurs de focus. Il propose ainsi la représentation ci-apr\`es pour \ref{ex:yapo.api.aman}\footnote{Pour une discussion plus détaillée de l'interaction avec le focus. Pour la coordination en Akye, voir aussi Della-Ahoundjo 2017} :
+  \ex. \Tree [.FocP [.$\alpha$ [ j\`ap\=o [ \'e $<$j\`ap\=o$>$ ] ]  [ \`ap\={\i} [ $<$\'e$>$ $<$\`ap\={\i}$>$ ] ] ] [.Foc$'$ [.{Foc\\\'am\n{\'a}} ] <$\alpha$> ] ]
+   
+     
+\subsubsection{L'étiquetage des séquences coordonnées}
+
+\subsubsection{Le probleme des etiquettes}
+Si les conjonctions sont tetes comme nous venons de le montrer, de quelle nature est leur syntagme ? Par réflexe, on est tent\'e de dire \&P. Mais nous avons vu que ce n'est pas le cas. Reprenons nos exemples :
+
+\ex. Corpus 1
+  \a. 	[\textsubscript{?} Kouassi et Mamadou] mangent.
+  \b.	[DP Ils] mangent.
+  \c.	[DP Les deux amis mangent] mangent.
+  \d.	* [\textsubscript{?} Kouassi lit et Mamadou rit] mangent.
+
+\ex. 	Corpus 2
+  \a.	Le fait que [\lab{?} Kouassi lit et Mamadou rit] est désolant.
+  \b.	Le fait que [\lab{IP} ce père aime sa fille] me réjouit.
+  \c.	Le fait que [\lab{IP} mon frère chante] enchante nos parents.
+  \d.	* Le fait que [\lab{?} Kouassi et Mamadou] est une bonne chose.
+
+  Les phrases en \Last\ et \LLast\ montrent que les conjonctions de coordination relient des constituants de même nature et surtout que la structure résultante est de la catégorie des conjoints et non de la conjonction. Cela peut être résume ainsi :
+  \ex. [\lab{XP} XP \& XP]
+  
+  Pour résoudre ce problème, Chomsky [2013] va proposer une solution en trois ``étapes'' :
+  
+  \etape\ Il y a deux types de coordination : une coordination non structurée et une coordination structurée [qui est absolument binaire]\footnote{Nous ne traitons pas de la question des types de coordination. Il semble toutefois qu'il y ait réellement deux types de coordinations : une coordination binaire, et une coordination n-aire. En effet, Krivochen [2015] aboutit a la même conclusion même si son analyse est différente de celle de Chomsky [2013]. Cela n'entame pas l'analyse que nous avons proposée. On peut juste postuler qu'elle ne s'applique qu'\`a la coordination n-aire. Un test possible pour savoir si on a affaire \`a une coordination n-aire ou binaire, c'est de voir si des séquences de plus de deux constituants sont admises. Il se peut aussi que, dans une langue donn\'ee, il puisse y avoir les deux sortes et que l'une et l'autre seraient introduites par des coordonnatifs différents [voir Krivochen pour le grec].}
+  
+  \etape\ La structure de la coordination binaire est la suivante :
+  \ex. \Tree [ \& [ XP YP ] ] \hfill [\& [XP YP]] 
+  
+  \etape\ Pour éviter que AE ne fanche, XP ou YP doit bouger
+  \ex. \Tree [ XP [ \& [ <XP> YP ] ] ] \hfill [XP [\& [$ < $XP$ > $ YP]]]
+  
+  Il pose pour finir que Conj i.e. \& et la structure qu'elle domine ne sont pas visible pour AE du coup, seul reste visible XP.
+  \ex. [XP \textcolor{gray}{[\& [$ < $XP$ > $ YP]]}] 
+  
+   
+\def\pause{}
+  
+  \noindent Cependant, nous venons de voir que la structure sous-jacente des séquences coordonnées que nous venons de voir est [ [\& XP] [\& YP] ]\marnote{\Tree [ [ \& XP ]  [ \& YP ] ]}.
+
+  \noindent En postulant que seul \& est invisible pour AE, on prédit que AE va trouver \{X,Y\}. Cependant, \`a cause de ce qu'on peut appeler la ``condition d'identit\'e'' (i.e. les conjonctions ne relient que deux constituants de même nature, cf. e.g., Progovac 1998), on se retrouve dans le cas o\`u l'argument de AE est de la forme \{XP,YP\} avec X = Y = E (le trait qui sert d'étiquette). AE va trouver en réalité une seule étiquette puisque \{E,E\} = \{E\}\footnote{En fait, AE construit l'ensemble des étiquettes qui se trouvent au niveau des têtes de son argument et il renvoi cet ensemble ssi c'est un singleton i.e. un ensemble avec un seul élément}.
+
+  Ainsi, il faut penser que \& -- tout comme T et les racines (Chomsky 2013) -- sont trop faibles pour projeter (voir aussi Abeill\'e (2003)) i.e. les traits qu'ils contiennent ne font pas partie de l'ensemble des étiquettes. Il sont donc invisibles pour AE. 
+
+  Voyons maintenant un cas pratique \Next.
+  \exg. m\`ar\'i\'i \motcle{k\'o\'o} \textipa{z}\textsubtilde{\'a}\textsubtilde{\'a} \motcle{k\'o\'o} \\
+  Marie \textsc{et} Jean \textsc{et}\\
+    ``Marie et Jean"\hfill (Gouro, Akpou\'e 2017)
+
+  \Last instancie la structure en \Next
+  \ex. [ [\& DP] [\& DP] ]
+
+  Donc, AE(\Last) = \{D,D\} = \{D\}. \pause \Last sera étiqueté comme un DP, comme il se doit.
+
+\subsection{Un peu plus sur la syntaxe du verbe}
+
+\subsubsection[Le petit v]{Le {v}P-shell}
+\subsubsection{Structure argumentale}
+
+\subsubsection{Structure évènementielle}
+
+%\end{document}
+
+\endinput

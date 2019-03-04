@@ -1,0 +1,109 @@
+% -*- coding: utf-8 -*-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%     Fichier Maitre pour Jos'Art Books        %%%
+%%%        Suivez les instructions ci-apres      %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+%%%%%%%%%      Modele base sur     %%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%     Language Sciences Press MMaster File     %%%
+%%%                                              %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+% Everything following a % is ignored
+% Some lines start with %. Remove the % to include them
+
+\documentclass[11pt,a4paper,oneside]{book}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%          additional packages                 %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% put all additional commands you need in the 
+% following files. If you do not know what this might 
+% mean, you can safely ignore this section
+
+
+
+%%%%%%%% META DONNEES %%%%%%%%%%%%%%%%%%%%%%
+\author{Auteur}
+\title{Titre du livre}
+\date{}
+
+
+\input{cfg/pc-packages.tex} 
+\input{cfg/pc-cmd.tex}
+\input{cfg/pc-env.tex}
+\input{cfg/pc-f2sty.tex}
+
+%\bibliography{mabibliographie} 
+
+
+\begin{document}
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Pages liminaires                 %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{lim/lim_c2c} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Frontmatter                      %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+
+\frontmatter
+
+\tableofcontents
+\include{cont/prologue} 
+%\include{cont/abrev}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Chapters                         %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+\include{cont/linf}
+\include{cont/intropm}
+\include{cont/sym}
+\include{cont/semin}
+\include{cont/phom}
+\include{cont/lexmo}
+
+
+% % copy the lines above and adapt as necessary
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Backmatter                       %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\nocite{*}
+\bibliographystyle{ldc}
+\bibliography{biblio}
+
+\end{document} 
+
+% you can create your book by running
+% xelatex main.tex
+%
+% you can also try a simple 
+% make
+% on the commandline

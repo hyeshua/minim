@@ -1,0 +1,465 @@
+% Fichier semin.tex
+%
+
+\ProvidesFile{semin.tex}[version 2018-01-26]
+% Decommenter les les lignes avec " %>> " pour tester le fichier
+%
+% ===================================
+%% File partly assisted by LyX 2.2.2 
+%% LyX tasks were :
+%%	- document arborescence
+
+
+%\documentclass[oneside,11pt]{book}
+%\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+
+
+%\begin{document}
+
+\chapter{Sémantique Minimaliste}
+
+  \sommaire
+
+  \section{La sémantique en Grammaire Générative}
+    \subsection{Sémantique et compétence linguistique}
+      La comp\'etence linguistique est d\'efinie comme la connaissance intuitive que poss\`ede tout locuteur id\'eal d'une langue L et qui lui permet de produire et interpr\'eter tout \'enonc\'e de cette langue m\^eme sans l'avoir jamais entendu auparavant. Cette connaissance inclut de fait celle qui permet \`a un individu d'interpréter une infinité de phrases même sans les avoir entendues auparavant. 
+      
+      Or, \`a partir du moment o\`u on ne s'int\'eresse plus uniquement aux mots, mais aux syntagmes, il semble \'evident que le sens d'une expression linguistique soit obtenu en combinant le celui de ses constituants imm\'ediats. Ainsi le sens d'une expression linguistique est d\'etermin\'e \`a partir du sens de ses parties et de la fa\c con dont ils sont combin\'es. C'est plus des principes les plus basiques en s\'emantique moderne : le \textit{Principe de Compositionnalit\'e}.
+      \begin{principe}[Principe de Compostionalité]\label{princ:compositionnalite}
+      	Le sens d'une expression linguistique est fonction du sens de ses parties et de la fa\c con dont elles sont assembl\'ees.
+      \end{principe}
+    \subsection{Sens et r\'ef\'erents}
+      \subsubsection{G\'en\'eralit\'es}
+      L'\'etude du sens GG a, tout comme la GG elle-m\^eme, \'evolu\'e. Suite \`a l'abandon previsible de la S\'emantique G\'en\'erative (Lakoff 1969 ; Jackendoff 1972 ; etc.) qui a longtemps alimenté les discussions concernant l'étude du sens linguistique, les s\'ematiciens y compris generativistes vont (Heim et Kratzer 1998 ; Borg 2004 ; Fintel et Heim 2011) vont adopter le programme fr\'egien repris par Montague (1970) et Davidson (1965) notamment. Ce paradigme, d'une certaine fa\c con d\'efinit le \textit{sens linguistique} par rapport au \textit{r\'ef\'erent / d\'enotation}. Le referent d'une expression linguistique est l'objet du monde reel auquel cette expression renvoie. p.ex., \textit{Abidjan} d\'enote (i.e. d\'esigne) la capitale de la C\^ote d'Ivoire.  
+      
+      \subsubsection{D\'enotation des phrases et conditiions de v\'erit\'e}
+      On pr\'esume que les items lexicaux d\'enotent de facon generale soit des individus, soit des ensembles d'individus soit encore des ensembles ayant pour membres des ensembles d'individus. 
+      \begin{asav}[La d\'enotation des mots]
+      	
+      	\begin{tabular}{|l|l|} 
+      	\hline	
+      	Type d'unit\'e	& D\'enotation \\
+      	\hline
+      	Noms propres	& individu \\
+      	\hline
+      	Verbes intransitifs	& ensemble d'individus \\
+        Noms communs non relationnels	&  \\
+        Adjectifs non relationnels	&  \\
+        \hline
+      	Verbes transitifs	& ensemble de couples \\
+      	Noms communs relationnels	&  \\
+      	Adjectifs relationnels	&  \\
+      	\hline
+        \end{tabular} 
+      	
+      \end{asav}
+        
+      Mais que dénotent les phrases ?
+      
+    \subsection{Mod\'eliser le sens des phrases}
+
+     \ex. Ali lit
+     
+     \begin{notation}[Valeur s\'emantique]
+       Pour toute expression A, \den[A] d\'esigne la d\'enotation ou valeur s\'emantique de A.
+     \end{notation}	 
+     
+     \ex. 
+       \a. \den[Ali] = \textsc{Ali}
+       \b. \den[lire] = \{$ x $ : $ x $ lit\} 
+       \b. \den[Ali lit] = ? 
+       
+       $ \Rightarrow $ \textit{Problème de compositionnalité} : \den[Ali] et \den[lire] ne sont pas composables / combinables.
+
+        \begin{itemize}
+          \item Solution : les fonctions !
+          \item On l'a vu  
+          \begin{itemize}
+          	\item les fonctions prennent des éléments d'un ensemble A et les associent chacun \`a un élément d'un ensemble B.
+            \item On peut décrire un ensemble a l'aide d'une fonction, voir D\'efinition \ref{def:fonction_caracteristique}, p. \pageref{def:fonction_caracteristique}. 
+          \end{itemize}
+        \end{itemize} 
+        
+        
+        \ex. 
+        \a. \den[Ali] = \textsc{Ali}
+        \b. \den[lire] = $ f : x \mapsto 1 \mbox{ ssi } x \mbox{ lit } $ 
+        \b. \den[Ali lit] = [$ f : x \mapsto 1 \mbox{ ssi } x \mbox{ lit } $](\textsc{Ali})  
+        
+        \begin{itemize}
+        	\item Une fonction a besoin d'argument et l'argument de $ f $ ici, c'est \textsc{Ali}.
+        	\item Mais comment le sait-on ? Comment s'assure-t-on que nos fonctions re\c coivent les bons arguments ?
+        \end{itemize}
+      
+
+      \subsubsection{Les types sémantiques}
+        \begin{itemize}
+        	\item Pour s'assurer que les fonctions re\c coivent les bons arguments, on pr\'ecise leur domaine (de définition) [voir Terminologie \ref{term:domaine}, p. \pageref{term:domaine}.]
+        	\item p.ex. les noms propres r\'ef\`erent \`a des individus/entit\'es et les pr\'edicats unaires \`a des fonctions qui prennent des individus et retournent des valeurs de v\'erit\'e.
+        	\item On peut donc distinguer trois types de d\'enotation :
+        	\begin{itemize}
+        		\item les entit\'es, qu'on note $ e $.
+        		\item les valeurs de v\'erit\'e, qu'on note $ t $ (`\textit{truth values}' i.e. valeurs de v\'erit\'e)
+        		\item les fonctions de D$ _e $\footnote{Domaine/ensemble des entit\'es} vers D$ _t $\footnote{Domaine/ensemble des valeurs de v\'erit\'e}, qu'on note $ \tys{e,t} $.    
+        	\end{itemize}
+        \end{itemize}
+		\begin{asav}[Types s\'emantiques (1)]
+			Les expressions linguistiques sont associ\'ees \`a des types s\'emantiques.
+			
+			\begin{tabular}{ll} 
+				\hspace*{6.35cm}	& \textit{Type s\'emantique} \\
+			\end{tabular}
+		
+			\begin{tabular}{ll} 		
+				Noms propres	& $ e $ \\
+				Verbes intransitifs	& $ \tys{e,t} $ \\
+				Noms communs non relationnels	& $ \tys{e,t} $  \\
+				Adjectifs non relationnels	& $ \tys{e,t} $ \\
+			\end{tabular} 
+			
+		\end{asav}
+	  
+	  De fa\c con g\'en\'erale, les types s\'emantiques peuvent \^etre caract\'eris\'es comme suit
+	  \begin{defin}[Type s\'emantique]
+	  	\begin{itemize}
+	  		\item $ e $ et $ t $ sont des types s\'emantiques.
+	  		\item Si $ a $ et $ b $ sont des types s\'emantiques, $ \tys{a,b} $ est un type s\'emantique.
+	  		\item Rien d'autre n'est un type s\'emantique.
+	  	\end{itemize}
+	  \end{defin}
+      \begin{rmq}
+      	Les d\'enotations de type $ \tys{a,b} $ sont des fonctions de D$ _a $ vers D$ _b $. p.ex. Les expressions du type $ \tys{e,t} $ d\'enotent des fonctions des entit\'es (D$ _e $) vers les valeurs de v\'erit\'e (D$ _t $).
+      \end{rmq}
+      
+      \begin{itemize}
+      	\item Cette d\'efinition autorise d'avoir des types s\'emantiques tels que $ \tys{t,\tys{t,t}} $, $ \tys{e,\tys{e,t}} $.
+      	\item $ \tys{\tys{t,t},t} $ : et, ou, mais, etc.  
+      	\item $ \tys{e,\tys{e,t}} $ : noms et adjectifs relationnels, verbes transitifs
+      \end{itemize}
+      \begin{exo}
+      	De quel type s\'emantique sont les verbes ditransitifs ?
+      \end{exo}
+      
+      \subsubsection{Notation lambda}
+        \begin{itemize}
+        	\item On le sait maintenant, les pr\'edicats d\'enotent des fonctions.
+        	\item p.ex. \den[rire] = $ f : x \mapsto 1 \mbox{ ssi } x \mbox{ rit} $.
+        	\item Il y a une fa\c con plus pratique de noter les fonctions : la notation lambda.
+        	\item Lambda, c'est \c ca : $ \lambda $.
+        	\item p.ex. 
+        	\begin{itemize}
+        		\item \den[rire] = $ f : x \mapsto 1 \mbox{ ssi } x \mbox{ rit} $ = $ \lambda x : x \in D_e.\cons{rire}\agm{x} $
+        		\item \den[voir] = $ \lambda y_e.\lambda x_e.\cons{voir}\agm{x}\agm{y} $
+        	\end{itemize}
+        	\item Syntaxe g\'en\'erale : $ \lambda x : \mbox{ (pr\'esupposition) } .\  \cons{f}\agm{x} $
+        	\item N.B.: on pr\'evoit autant de $ \lambda $ que d'arguments pour le pr\'edicat. p.ex. pr\'edicat unaire : $ \lambda x.\_\_\agm{x}$, binaire : $ \lambda x.\lambda y. \_\_\agm{y}\agm{x}$, ternaire : $ \lambda x.\lambda y.\lambda z.\_\_\agm{z}\agm{y}\agm{x}$.   
+        \end{itemize}
+        
+      \subsubsection{Application fonction et modification de pr\'edicat}
+      Il s'agit des r\`egles de composition s\'emantique.
+      \begin{regle}[Composition s\'emantique] L'interprétation des structures syntaxiques obéit aux règles suivantes :
+      	\begin{itemize}
+      		\item [(NT)] Si $\alpha$ est un n\oe ud terminal, alors \den[$ \alpha $] est donn\'e dans le lexique. 
+      		\item[(AF)] Si $\alpha$ est un n\oe ud non-terminal tel que \hfill [Application fonctionnelle] 
+      		\begin{itemize}
+      			\item [i] $\{ \beta,\gamma\}$ sont les filles de $\alpha$
+      			\item[ii] \den[$ \beta $] est une fonction telle que \den[$ \gamma $]
+      			 $\in$ D$ _{ \llbracket \beta \rrbracket} $.
+      		\end{itemize} 
+      		alors \den[$ \alpha $] = \den[$ \beta $](\den[$ \gamma $])
+      		\item[(MP)] Si $\alpha$ est un n\oe ud non-terminal tel que\hfill [Modification de pr\'edicat] 
+      		\begin{itemize}
+      			\item [i] $\{ \beta,\gamma\}$ sont les filles de $\alpha$
+      			\item[ii] \den[$ \beta $] et \den[$ \gamma $] sont des fonctions du type $ \tys{e,t} $ 
+      		\end{itemize} 
+      		alors \den[$ \alpha $] = $ \lambda x_e. $\den[$ \beta $]($ x $) \& \den[$ \gamma $]($ x $) (i.e. \den[$ \alpha $] = 1 ssi \den[$ \beta $]($ x $) = 1 et \den[$ \gamma $]($ x $) = 1.)
+      	\end{itemize}
+      \end{regle}
+      
+      \begin{asav}
+      	\den[et] = $ \lambda P_{\tys{e,t}}.\lambda Q_{\tys{e,t}}.\lambda x_e.P\agm{x} = Q\agm{x} = 1 $
+      \end{asav}
+       
+      \subsubsection{Sémantique et thêta-rôles}
+
+        \paragraph{Notion d'arité}
+         Le nombre d'arguments que prend un pr\'edicat ou une fonction est appel\'e \textit{arit\'e} de ce pr\'edicat ou de cette fonction. 
+         Les pr\'edicats ont une arit\'e fixe. p.ex. si un verbe dit transitif apparait au moins une fois sans compl\'ement d'objet direct, il ne ne peut d\'enoter un pr\'edicat binaire. 
+        \paragraph{Problème des compléments circonstanciels et s\'emantique n\'eo-davidsonnienne} Il se trouve que dans la pratique, les verbes peuvent apparaitre avec un nombre d'arguments diff\'erents.
+        \ex.\label{ex:dupont} Dupont a achet\'e la banane \`a 9h \`a Paris. $ \rightsquigarrow $ 4 arguments.
+        
+        \ex. Dupont a achet\'e une banane. $ \rightsquigarrow $ 2 arguments. 
+		
+		\begin{itemize}
+			\item La solution de Davidson : les phrases contiennent une r\'ef\'erence \`a un \textit{\'evenement}.
+			\item p.ex. \den[acheter] = $ \lambda x. \lambda y.\lambda e.\cons{acheter}\agm{e}\agm{y}\agm{x} $
+			\ex. \a. \den[\LLast] $ \rightsquigarrow $ il existe au moins un \'ev\`enement $ e $ tel que $ \cons{acheter}\agm{e}\agm{\cons{d}}\agm{\cons{b}} $.
+			\b. \den[\ref{ex:dupont}] $ \rightsquigarrow $ il existe au moins un \'ev\`enement $ e $ tel que $ \cons{acheter}\agm{e}\agm{\cons{d}}\agm{\cons{b}}\ $ \& $ \cons{lieu}\agm{e}\agm{\cons{p}} \et \cons{tps}\agm{e}\agm{\cons{10h}} $.
+		    
+		    \item La version n\'eo-davidsonnienne : 
+		    \begin{itemize}
+		    	\item les verbes, tout comme les noms d\'enotent des fonctions unaires.
+		    	\item si les noms d\'enotent un ensemble d'individus, les verbes d\'enotent des \'ev\`enements.
+		    	\item les arguments syntaxiques du verbes i.e. complements renvoie \`a des participants de l'\'ev\`enement.
+		    	\item dans la pratique chaque th\^eta-r\^ole est rendu par un pr\'edicat binaire dont le premier est l'\'ev\`ement.
+		    \end{itemize}
+	        \item[] \ex. \den[\ref{ex:dupont}] $ \rightsquigarrow $ il existe au moins un \'ev\`enement $ e $ tel que $ \cons{acheter}\agm{e}\ $ \& $\cons{agent}\agm{e}\agm{\cons{d}} $ \et $\cons{patient}\agm{e}\agm{\cons{b}} \et  \cons{lieu}\agm{e}\agm{\cons{p}} \et \cons{tps}\agm{e}\agm{\cons{10h}} $.
+	        	 
+		\end{itemize}
+        
+
+
+  \section[Architecture d'une sémantique minimaliste]{Desiderata à une sémantique minimaliste}
+
+    \subsection{Une sémantique non-référentielle}
+    
+    \begin{itemize}
+    	\item Depuis presque toujours, on a pris l'habitude d'admettre que les mots ont des référents\pause
+    	\item Toutefois, Chomsky 2005 [Nouveaux horizons], 2003 [Reply to Ludlow], ainsi que plusieurs autres \`a sa suite vont montrer que la r\'ef\'erence n'est pas une propri\'et\'e intrins\`eque des expressions linguistiques, m\^eme si elles peuvent \^etre sujettes \`a un usage r\'ef\'erentiel i.e. la r\'ef\'erence fait partie de la performance \voir{Richard 2013}.\pause
+    	\item Du coup, la th\'eorie s\'emantique ne peut \^etre fond\'ee sur la notion de r\'ef\'erent \pause i.e. les noms communs, noms propres, les d\'efinis d'unicit\'e ou de familiarit\'e, etc. n'ont pas de r\'ef\'erent intrins\`equement.
+    \end{itemize}
+    \begin{itemize}
+    	\item Le rejet de la r\'ef\'erientialit\'e entraine logiquement celui de la v\'ericonditionnalit\'e. \pause
+    	\item En effet, cette id\'ee est fond\'ee sur l'hypoth\`ese que les phrases ont pour r\'ef\'erent des valeurs de v\'erit\'e. \pause
+    	\item Or, si les phrases n'ont pas de r\'ef\'erents, alors, l'id\'ee que le sens d'une phrase est l'ensemble de ses conditions de v\'erit\'e n'est plus tenable.\pause 
+    	\item \alert{Une s\'emantique minimaliste se doit donc d'\^etre non-v\'ericonditionnelle} i.e. la v\'ericonditionnalit\'e rel\`eve des langages-e.
+    \end{itemize}
+    \subsection{Une sémantique opérationnelle, formelle et compositionnelle}
+    \begin{itemize}
+    	\item Une s\'emantique minimaliste doit mod\'eliser les processus s\'emantiques \`a l'aide d'op\'erations.
+    	\item Elle doit aussi \^etre une s\'emantique formelle \cite[cf.][]{chomsky2005appendix} et compositionnelle -- voir aussi Principe \ref{princ:compositionnalite}, p. \pageref{princ:compositionnalite}.
+    \end{itemize}	
+    
+    \subsection{Une s\'emantique componentielle}
+     \begin{itemize}
+     	\item Les traits sont omnipr\'esents dans le PM. Ils constituent un maillon essentiel de l'appareil minimaliste.\pause\ [Samuels 2009, Collins et Stabler 2016, Rouveret 2015, Adger 2010, Adger et Svenonius 2011, Di Sciullo I-Morphology, Di Sciullo et al 2010, Harley et Noyer 1999, inter allia]\pause
+     	\item Les \textit{entr\'ees lexicales} dans le sens de Chomsky sont des triplets ne contenant que des ensembles de traits.\pause
+     	\item Les interfaces ne lisent que les traits cf. Condition d'Interpr\'etabilit\'e Int\'egrale
+     \end{itemize}\pause
+     \begin{principe}[Interpr\'etabilit\'e Int\'egrale]
+     	Tout trait qui arrive aux interfaces doit \^etre interpr\'etable.
+     \end{principe}\pause
+     \begin{itemize}
+     	\item \alert{Une s\'emantique minimaliste doit donc \^etre componentielle}\pause\ i.e. utiliser les traits s\'emantiques.
+     \end{itemize}
+    
+    \subsection{Une sémantique néo-davidsonienne}
+
+      Contrairement aux carat\'eristiques que nous venons de voir, le carat\`ere n\'eo-davidsonien n'est pas entra\^in\'e logiquement par les principes du Programme Minimaliste. Cependant la quasi totalit\'e des chercheurs qui se sont nt\'eress\'es \`a la question convergent vers l'id\'ee que les structures s\'emantiques sont des structures \'evenementielles. En d'autres termes, l'analyse s\'emantique des phrases devrait poursuivre le programme n\'eo-david\-son\-nien \cite[cf.][]{pietroski2008minimalist,pietroski2011minimal,ramchand2011minimalist,richard2013syntactocentrisme}.
+
+  \section{La proposition de Pietroski}
+
+    \subsection{Le sens comme instruction}
+     \point{I comme intension}
+     \begin{itemize}
+     	\item Rappel :\\
+     	\begin{tabular}{lcr}
+     		\hline 
+     		Langage-i & vs & Langage-e \\ 
+     		\hline 
+     		interne &  & externe/externalis\'e \\ 
+     		intensionnel &  & extensionnel \\ 
+     		\hline 
+     	\end{tabular}
+     	\item Pietroski se focalise sur la distinction \textit{intensionnel} vs \textit{extensionnel}
+     	\item Langage-i = intensions ; Langage-e = extensions \cite[cf.][]{chomsky2014problems}
+     \end{itemize}
+     \begin{quote}
+     	[T]he languages human children
+     	naturally acquire can be described as biologically implemented procedures that
+     	generate expressions. Chomsky (1986) calls these procedures, [...], \emph{I-languages}. By contrast, \emph{E-languages} are sets of
+     	expressions; even for languages with endlessly many expressions, [...]. The `I'/`E'
+     	distinction connotes the contrast between intensions (procedures, algorithms)
+     	and the extensions we characterize by appeal to procedures [...] \voir{Pietroski, Minimalist meaning}
+     \end{quote}
+    
+    \point{Intension vs extensions}
+    
+    \begin{itemize}
+    	\item p.ex. L'Alphabet
+    	\begin{itemize}
+    		\item \{a,b.c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z\} $ \Rightarrow $ Extension
+    		\item \{$ x $ | $ x $ est une lettre de l'alphabet latin\} $ \Rightarrow $ Intension
+    	\end{itemize}
+    	\item Intension = proc\'edure, algorithme
+    	\item Extension = Ensemble des r\'esultats `obtenables' apr\`es computation des intensions
+    	\item Deux intensions peuvent avoir la m\^eme la m\^eme extension
+    \end{itemize}
+    \begin{quote}
+    	[A] single E-language
+    	might be determined by two or more generative procedures
+    \end{quote}
+    \begin{itemize}
+    	\item p.ex. \alert{$ x \times 2 $} et \alert{$ x \times \frac{6}{3} $} ont la \alert{m\^eme extension} i.e. donnent le m\^eme r\'esultat, mais repr\'esentent \alert{diff\'erentes intensions} -- i.e. proc\'edures.
+    	\item \alert{$ x \times 2 $} : prendre un nombre, disons $ x $. Puis le multiplier par 2.
+    	\item \alert{$ x \times \frac{6}{3} $} : Prendre un nombre, disons $ x $, le multiplier par 6. Puis diviser le tout par 3. 
+    	\item On obtient le même résultat quelque soit le nombre qu'on prend.
+    	\item Deux chemins diff\'erents qui m\`enent au m\^eme r\'esultat.
+    \end{itemize} 
+    
+    \point{Le sens comme instruction ... pour construire des concepts}
+    \begin{itemize}
+    	\item Pietroski, \`a la suite de Chomsky, assume que le signifiant et le signifi\'e [sens] d'une expression linguistique sont des instructions adress\'ees aux interfaces, respectivement SM et C-I.
+    	\item Les instructions envoy\'ees \`a SM vont servir pour l'externalisation, p.ex., proc\'edures articulatoires dans le cas des langues orales.
+    	\item Les instructions address\'ees \`a C-I vont servir pour construire des repr\'esentations mentales, conceptuelles i.e. des concepts. 
+    	\item La nature instructionnelle/intensionnelle du sens linguistique se voit au niveau suivant : deux locuteurs n'ont forc\'ement besoin d'avoir la m\^eme repr\'esentation mentale de ce \`a quoi un mot renvoie, il faut juste qu'ils associent les m\^emes objets aux m\^emes noms. 
+    	\item Peu importe la proc\'edure de cat\'egorisation utilis\'ee, si en fin compte les mêmes objets sont rang\'es, \'etiquet\'es par le m\^eme signifiant ;
+    	\item cela suffit \`a garantir la communication.
+    	\item p.ex, Un aveugle et un voyant sont plac\'e devant la t\^ache suivante : Identifiez, parmi les fruits suivants, ceux qui sont des mandarines. 
+    	\item Pr\'ecisons que le voyant n'a jamais tenu de mandarines entre les mains, il les a juste vues.
+    	\item Tous les deux vont réussir le test mais en utilisant diff\'erentes proc\'edures de cat\'egorisation.
+    	\item Le sens linguistique est donc comparable \`a un algorithme/intension/instruction qui permet de cat\'egoriser ou, plus g\'en\'eralement, de construire des concepts.
+    	\item La nouveaut\'e de cette proposition r\'eside dans les d\'etails \voir{Pietroski, Minimal instructions}
+    	\item Une expression comme \alert{\textit{chien}} n'a pas pour sens \alert{$ ^* $\{$ x $ | $ x $ est un chien\}}
+    	\item ni la fonction \alert{$ ^* $f : $ x \mapsto 1$/vrai ssi $ x $ est un chien}. 
+    	\item \alert{\textit{chien}} a pour sens, \alert{l'instruction de construire une telle fonction}, tout comme les formes phonologiques peuvent etre vues comme des instructions pour construire des sons.
+    \end{itemize}
+    \begin{quote}
+    	So in suitably controlled contexts, intuitions about the truth or falsity of a
+    	thought communicated with an i-expression can serve as useful data points for
+    	theories of i-meanings. [...] [The proposal by Pietroski] is fully compatible with psychologized
+    	versions of Truth Conditional Semantics, according to which i-expressions
+    	are instructions to construct concepts that have Tarski-style satisfaction 
+    	conditions [i.e. truth conditionnal properties]. \voir{Pietroski, Minimalist meaning}
+    \end{quote}
+    \begin{quote}
+    	A variant
+    	proposal is that i-expressions are instructions to construct concepts, and that the concepts
+    	constructed have satisfaction conditions, even though the instructions do not require this.\voir{Pietroski, Minimalist Meaning, footnote 4., p. 320 [4]}.
+    \end{quote}
+    \begin{itemize}
+    	\item Par ailleurs, pour lui, le sens linguistique -- con\c cu comme instruction -- ne peut produire que des concepts/pr\'edicats unaires.
+    	\item En r\'esum\'e, si les formes phonologiques servent \`a former, p.ex., des sons, le sens linguistique sert \`a former des concepts unaires.
+    \end{itemize}
+
+    \point{Construire ? ... ou r\'ecup\'erer ?}
+    
+    \begin{itemize}
+    	\item Pietroski formule cette id\'ee d'une seconde fa\c con.
+    	\item Imaginez votre m\'emoire comme une gigantesque biblioth\`eque
+    	\item et les concepts -- ce \`a quoi renvoient les mots -- comme les livres de la biblioth\`eque.
+    	\item Imaginez que l'emplacement des concepts soit \'etiquet\'e
+    	\item et que cette étiquette corresponde au signifiant -- en suivant la terminologie saussurienne.
+    	\item Construire un concept peut \^etre vu comme aller le r\'ecup\'erer \`a un[e] adresse/emplacement donn\'e[e] -- i.e. qu'on construise, ou qu'on recup\`ere ; on obtient toujours le m\^eme r\'esultat \`a la fin : un concept. 
+    \end{itemize}
+    \begin{notation}
+    	Pour toute s\'equence de lettres C, \alert{recup@C} est l'instruction de construire un concept qui s'applique \`a $ x $ ssi $ x $ est C et qu'on notera \alert{C(\textsc{x})}/\alert{C(\_)} ; ou instruction de r\'ecup\'erer un concept \`a l'adresse C.
+    \end{notation}
+
+    \subsection{Le sens des syntagmes : conjonction, non application}
+    \begin{itemize}
+    	\item Quelle est l'op\'eration s\'emantique la plus basique ?\pause
+    	\item Pietroski r\'epond la conjonction.
+    	\item Il prône que Fusion, d\'eclenche, sur le plan s\'emantique, une op\'eration de conjonction qui, comme Fusion est binaire.
+    	\item En voici une d\'efinition
+    \end{itemize} 
+    \begin{defin}[Conjonction]
+    	\textsc{Conj} est une op\'eration binaire telle que pour \iconc{A} et \iconc{B} des instructions pour construire les concepts unaires \alert{\concept{A}} et \alert{\concept{B}}, \alert{\conj{A}{B}} est l'instruction de :
+    	\begin{enumerate}
+    		\item exécuter \iconc{A} pour obtenir \concept{A}
+    		\item exécuter \iconc{B} pour obtenir \concept{B}
+    		\item Construire le concept \alert{\cconj{A}{B}} qui s'applique \`a $ x $ ssi $ x $ est A et $ x $ est B i.e. ssi \alert{\concept{A}} et \alert{\concept{B}} s'appliquent \`a $ x $
+    	\end{enumerate} 
+    \end{defin}
+  \section{Construire une s\'emantique minimaliste componentielle}
+    \begin{itemize}
+    	\item On peut reprocher au mod\`ele de Pietroski de ne tenir aucun compte des traits.
+    	\item Cependant, il est facile de palier ce probl\`eme.
+    	\item En effet, si Chomsky avance l'id\'ee que les signifiants et les signifi\'es sont en fait des instructions pour les interfaces, il est aussi d'avis qu'ils sont des ensembles de traits.
+    	\item L'une des id\'ees qui \'emanent de l\`a est que instructions=trait.
+    	\item Ainsi, pour toute instruction \alert{\iconc{C}} de construire \alert{\concept{C}}, il est possible de d\'efinir le trait [+C] tel que tel que \alert{[+C] = \iconc{C}}. 
+    	\item Dans la même logique, pour tout trait [+C] = \iconc{C} et [+D] = \iconc{D}, \alert{[+C, +D] = \conj{C}{D}} $ \rightarrow $ \alert{\cconj{C}{D}}
+    	\item Mais puisqu'une matrice contient g\'en\'eralement plus de deux traits, il faut d\'efinir une op\'eration de conjonction n-aire.
+    	\item Elle est pareille \`a celle Pietroski, seulement elle peut prendre un nombre d'argument sup\'erieur ou \'egal \`a 2. e.g., [+C, +D, +E] $ \rightarrow $ $ \bullet $[\concept{C}, \concept{D}, \concept{E}]
+    	\item Il y a aussi des matrices qui se r\'esument \`a un seul trait. Dans ce cas, il semble que la conjonction n'est pas appropri\'ee.
+    	\item Deux solutions sont envisageables : 
+    	\begin{itemize}
+    		\item D\'efinir une alg\`ebre des traits 
+    		\item Modifier notre op\'eration de conjonction n-aire, en sorte qu'elle prenne un ou plusieurs arguments. 
+    	\end{itemize}
+    \end{itemize}
+
+    \point{Alg\`ebre des traits}
+    	\begin{defin}[Syntaxe]
+    		Pour tout trait T1, T2, ..., Tn ;\\
+    		\begin{itemize}
+    			\item {[T1]} est une matrice
+    			\item {[T1, ..., Tn]} est une matrice
+    		\end{itemize}
+    	\end{defin}
+    	\begin{defin}[S\'emantique]
+    		Pour toute matrice M, 
+    		\begin{itemize}
+    			\item Si M = [T1], alors M $ \rightarrow $ \concept{T1}
+    			\item Si M = [T1, ..., Tn], alors M $ \rightarrow $ $ \bullet $[\concept{T1}, ..., \concept{Tn}]
+    		\end{itemize}
+    	\end{defin}
+    
+    \begin{itemize}
+    	\item l'idée maitresse ici :
+    	\begin{itemize}
+    		\item les matrices simples (contenant un seul trait) abrègent une instruction simple
+    		\item matrice complexe abrègent une instruction complexe correspondant \`a peu pr\`es \`a \textsc{Conj}.
+    	\end{itemize}
+    	
+    	\item il est possible de simplifier ce double postulat, en modifiant \textsc{Conj}.
+    \end{itemize}
+    \begin{defin}[\textsc{ConjG\'en}]\label{def:conjgen}
+    	\textsc{ConjG\'en} est une op\'eration unaire telle que pour {\sc S\'e} = \{\iconc{T1}, ..., \iconc{Tn}\} un ensemble d'instructions pour construire les concepts unaires \alert{\concept{T1}}, ...,  \alert{\concept{Tn}}, \ints{\iconc{T1}, ..., \iconc{Tn}} est l'instruction de :
+    	\begin{enumerate}
+    		\item Ex\'ecuter toutes les  instructions appartenant \`a \textsc{S\'e} pour obtenir les concepts \alert{\concept{T1}}, ...,  \alert{\concept{Tn}}. 
+    		\item Construire le concept $ \circ $[\alert{\concept{T1}}, ...,  \alert{\concept{Tn}}] qui s'applique \`a $ x $ ssi \alert{\concept{T1}}, ...,  \alert{\concept{Tn}} s'appliquent \`a $ x $. 
+    	\end{enumerate} 
+    \end{defin}
+    D'apr\`es cette d\'efinition, [+C] $ \rightarrow $ $ \circ $[\concept{C}], le concept qui s'applique \`a $ x $ ssi $ x $ est C.
+    
+    %%%%% EXEMPLES CONCRETS %% -------------
+    \point{Quelques exemples}
+    \begin{itemize}
+    	\item {[\trait{+adulte}]}  = \ints{\iconc{adulte}} $ \rightarrow $ \adconc{\concept{adulte}}
+    	\item {[\trait{+anim, +hum}]} = \ints{\iconc{anim\'e}, \iconc{humain}} $ \rightarrow $ \adconc{\concept{anim\'e}, \concept{humain}}
+    \end{itemize} 
+    %% ------------------------------------%
+    
+    %%% AUTRE HYPOTHESE %% ----------------%
+    
+    \point{Une autre proposition ?}
+    
+    
+    \begin{itemize}
+    	\item Les modifications apport\'ees au mod\`ele de Pietroski pr\'esentent les \alert{traits} comme des \alert{instructions} \alert{ex\'ecut\'ees} par les interfaces -- C-I dans le cas des traits s\'emantiques [Hypoth\`ese 1].
+    	\item  Il est cependant possible de traiter les \alert{traits} comme des \alert{symboles} dont certains peuvent \^etre et sont \alert{interpr\'et\'es} par les interfaces -- C-I dans le cas des traits s\'emantiques [Hypoth\`ese 2] \citep[cf.][]{akpoue_kouakou2018tamlex}.
+    	\item La diff\'erence entre ces deux propositions est t\'enue.
+    	\item Qu'ils soient ex\'ecut\'es ou interpr\'et\'es, les traits, une fois ``travaill\'es'' au niveau des interfaces, produisent du contenu.
+    	\item \`A la base donc, ces deux hypoth\`eses se valent.
+    	\item Toutefois, elles n'ont pas les m\^emes implications. p.ex.
+    	\begin{itemize}
+    		\item[Hyp 1] particuli\`erement appropri\'ee dans un contexte (de linguistique) informatique
+    		\item[Hyp 2] s'accomode assez bien de la linguistique formelle.
+    	\end{itemize}
+    	\item Les implications de l'Hypoth\`ese 2 sont en en train d'\^etre analys\'ees.
+    	\item Donc, m\^eme si elle semble offre des perspectives int\'eressantes, il n'en demeure pas moins que c'est encore un mod\`ele qui se construit.
+    	\item Peut-\^etre \`a l'avenir, ce mod\`ele, aujourd'hui embryonnaire et lacunaire, va jouer un r\^ole important en s\'emantique minimaliste.
+    	\item Cependant, nous allons adopter ici l'hypoth\`ese 1.
+    	\item L'objectif de ce d\'etour \'etait de montrer que si la s\'emantique sans valeurs de v\'erit\'e de Pietroski est le seul mod\`ele `complet' de s\'emantique minimaliste, ce n'est pas le seul mod\`ele possible.
+    	\item Il ne faut pas assimiler la s\'emantique minimaliste \`a la s\'emantique pietroskienne.   
+    \end{itemize}
+  
+  \section{R\'ecapitulatif}
+   \begin{itemize}
+   	\item Le sens linguistique comme instruction pour rep\'erer/construire des concepts.
+   	\item La seule op\'eration de composition s\'emantique est la \textit{Conjonction G\'en\'eralis\'ee}
+   	
+   	\begin{defin}[Conjonction G\'en\'eralis\'ee \agm{reprise de la D\'efinition \ref{def:conjgen}, p. \pageref{def:conjgen}.}]
+   		\textsc{ConjG\'en} est une op\'eration unaire telle que pour {\sc S\'e} = \{\iconc{T1}, ..., \iconc{Tn}\} un ensemble d'instructions pour construire les concepts unaires \alert{\concept{T1}}, ...,  \alert{\concept{Tn}}, \ints{\iconc{T1}, ..., \iconc{Tn}} est l'instruction de :
+   		\begin{enumerate}
+   			\item Ex\'ecuter toutes les  instructions appartenant \`a \textsc{S\'e} pour obtenir les concepts \alert{\concept{T1}}, ...,  \alert{\concept{Tn}}. 
+   			\item Construire le concept $ \circ $[\alert{\concept{T1}}, ...,  \alert{\concept{Tn}}] qui s'applique \`a $ x $ ssi \alert{\concept{T1}}, ...,  \alert{\concept{Tn}} s'appliquent \`a $ x $. 
+   		\end{enumerate} 
+   	\end{defin}
+    \item Le sens linguistique ainsi d\'efini peut \^etre aussi not\'e \`a l'aide de matrice s\'emantiques dont chaque repr\'esente l'une des sous-instructions composant le sens de l'expression en question.
+   \end{itemize}
+   
+%\end{document}
+\endinput

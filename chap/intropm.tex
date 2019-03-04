@@ -1,0 +1,338 @@
+% Fichier intropm.tex
+\ProvidesFile{intropm.tex}[version 2018-01-22]
+% Decommenter les les lignes avec " %>> " pour tester le fichier
+%
+
+
+	\chapter{Programme Minimaliste}
+ 	
+ 	\sommaire
+	
+	\section{Avant tout des questions}
+	  En venant \`a de telles rencontres, on s'attend en g\'en\'eral \`a recevoir des solutions ``prêt-\`a-porter'' aux problèmes posés au linguiste. 
+	  Nous allons peut-être vous décevoir. \`A partir de cet atelier, nous allons surtout poser des problèmes, des questions auxquelles le linguiste se trouve confronté dans l'analyse du langage et passer en revue l'essentiel des solutions autour des\-quelles s'articulent les débats au sein de la communauté des linguistes géné\-rativistes. 
+	  	  
+	  Le PM, n'est pas une théorie -- on ne le dira jamais assez -- c'est un programme de recherche. Cela veut dire qu'il est similaire \`a la rédaction d'une thèse ou \`a la conduite de tout autre projet de recherche du genre. On part d'une problématique (la question qu'on veut résoudre) et on cherche des solutions. Au bout d'u moment, on est arrivé \`a un point o\`u la réponse semble plus ou moins \`a port\'ee de main puisqu'on sait tant soit peu de quelle forme elle peut-être. 
+	  Pour certains des problèmes posés par le sujet, les solutions \`a notre disposition sont assez satisfaisantes mais pour d'autre, il faut encore creuser.
+	  %Rappelez-vous la fois o\`u vous etiez en train de resoudre un probleme de sciences au lycée au sein de votre groupe d'étude. Il vous est arriv\'e des moments o\`u apr\`es des heures de discussion, vous étiez convaincu que la réponse devait répondre a certains critères [p.e. le résultat final d'une question intermédiaire était 2cm ou 3cm] mais vous ne saviez pas comment atteindre ce résultat. Parfois, l'un avait une idée. Mais, a peine l'avait-il exprimée que le groupe se rendait compte que sa proposition posait des problèmes de faisabilité soit parce que cela viole un autre théorème. 
+	  
+	  La GG est arrivée \`a ce point précis o\`u on sait \`a peu pr\`es quel est le chemin pour atteindre la solution, quelles contraintes cette solution doit satisfaire, et pour certaines questions intermédiaires, nous avons des ré\-ponses satisfaisantes; mais il reste encore du travail puisqu'il reste des questions sans ré\-pon\-ses. 
+	  
+	  Le fait que les analyses et formulations évoluent est donc un bon signe. Cela signifie qu'on avance vers la réponse et qu'on ne stagne pas.
+	  
+	  \section[Aux origines du Programme Minimaliste]{La Grammaire Générative : aux origines du Programme Minimaliste}
+	  Le Programme Minimaliste (PM) est juste la Grammaire Générative (GG) avec de nouveaux habits. 
+	  Pour bien comprendre le contexte dans lequel est n\'e la GG, nous vous proposons un peu d'histoire. Revenons tout d'abord \`a ce problème qui mobilise autant de ressources et auquel on n'a pas toutes les réponses qu'on voudrait ?
+	  C'est celui-ci : ``Comment fonctionne le langage ?''
+	  Ce problème vient avec un ensemble de sous problèmes dont le premier est le suivant : ``Qu'est-ce le langage ?''
+	   
+	  A cette question, les rédacteurs du \textit{Cours de Linguistique Générale} répondent : trop compliqué, le langage. Concentrons-nous sur les lan\-gues. Cette réponse a fond\'e le courant structuraliste qui prône essentiellement que \textit{la langue est un système intégral o\`u tout se tient, o\`u un élément n'a de valeur que par son opposition aux autres}. Ainsi, les langues sont vues comme des systèmes de communication propres \`a des communaut\'es donn\'ees. 
+	  
+	  Dans les années 1950, Chomsky va faire remarquer qu'une telle approche du langage remet en cause l'opportunité d'une science linguistique. En effet, il argue que si le langage est assimilé aux langues qui sont un fait culturel, le langage n'est pas un objet autonome et s'il n'est pas un objet autonome, la science qui l'étudie ne peut être elle aussi autonome. Pour Chomsky, le langage est au contraire suffisamment autonome pour être étudié en lui-même  et pour lui-même. \`A la question ``Qu'est-ce que le langage ?'' Il répond: c'est un organe. Il est donc inn\'e et parfaitement autonome, comme le système visuel par exemple. La t\^ache donc du linguiste est d'\'etudier l'appareil langagier ou langage. 
+	  \subsection{Deux états \`a décrire}
+	    Si le langage est un organe, on s'attend \`a ce qu'il passe par deux états : un \textit{état initial} (i.e. l'organe tel qu'il est au début de la vie de l'individu ; e.g. \`a la naissance) et un \textit{état final} (i.e. \`a son \'etat adulte).
+	  \subsection{L'état initial : Facult\'e du Langage}
+	    Les animaux quels qu'ils soient ne peuvent apprendre \`a parler aucune lan\-gue humaine même avec un entrainement intensif alors qu'un bébé humain a la possibilit\'e d'apprendre n'importe quelle langue humaine pourvu qu'il soit en contact avec des données de cette langue. Pourquoi ? La ré\-ponse est que les enfants possèdent la facult\'e de ``parler'' : la possibilit\'e d'utiliser n'importe quel système de communication utilis\'e par les hommes. Cette capacit\'e a reçu le nom de \textit{Facult\'e du Langage} -- en abr\'eg\'e FL. FL peut donc être \`a priori vue comme une machine superbement rod\'ee pour apprendre les langues cf. Chomsky 2005. En effet, du fait que le calendrier de l'acquisition du langage est quasiment uniforme pour tous les enfants sans distinction de langue, d'environnement, etc. suggère que le langage a quel\-que chose de biologique et que tous les enfants naissent avec la Facult\'e du Langage qui passe donc pour être commune \`a tous les individus humains et identique chez eux tous au moins avant qu'elle ne subisse des évolutions dues notamment \`a des facteurs externes comme le volume et la qualit\'e des interactions (interactions étant ici assimilées aux énoncés et donc aux données de la langue \`a apprendre).  
+	    La Faculté du Langage est donc le premier état sous lequel apparait le langage chez l'homme. En d'autres termes, c'est l'état initial.
+	    \subsubsection{GU : une modélisation de FL}
+	      FL constitue donc l'un des aspect de l'objet d'\'etude du langage -- puisqu'\'e\-tudier le langage revient \`a étudier entre autres les deux principaux états sous lequel il se présente : l'état initial et l'état final. Mais, il est évident que le langage, contrairement au système visuel ou \`a l'appareil digestif ne se prête pas \`a une observation directe. L'architecture et le fonctionnement de FL ne peuvent être directement décrits par observation comme dans le cas des réflexes de la grenouille ou de la constitution d'une machine décomposée en pièces. Il nous faut donc un modèle, l'objectif étant de : ``
+	      	\textit{rendre compte de phénomènes observables: il s'agit de
+	      	mettre en place un dispositif ... dont le fonctionnement produit des résultats comparables aux données
+	      	observées}.'' (Victori 1997) 
+      	  En effet, si le fonctionnement du langage ne peut être décrit par observation directe il peut l'être par inférence i.e. conclusions tirées notamment \`a partir  de l'observation des données produites par le langage. L'ensemble de ces règles et conclusion va constituer un dispositif permettant de générer des données e.g. une règle/opération d'assimilation va permettre de produire certains changements morphophonologiques dans les contextes indiqu\'es. Ce dispositif/sys\-tème, c'est un modèle. Si, les donn\'ees produites par ce système correspondent aux données observées, on va supposer que notre modèle est adéquat. 
+	      
+	      Le modèle de FL que les g\'en\'erativistes s'attellent \`a construire et \`a amé\-liorer depuis début du programme chomskyen a fini par recevoir le nom \textit{Grammaire Universelle}  (GU). Le terme n'est pas nouveau mais son sens a chang\'e. Le concept de Grammaire Universelle a d'abord été ``inventée'' par les structuralistes typologistes tels que Greenberg et désignait un ensemble '\textit{universaux} du langage i.e. des règles récurrentes \`a travers les langues. Mais le terme va subir une ``res\'emantisation'' en GG pour être attach\'e \`a FL. Il y a deux différences majeures entre la grammaire universelle dans la GG, que nous abregerons \`a partir de maintenant par GU, et la grammaire universelle des typologistes, que nous désignerons par \textit{universaux du langage}  Chomsky 2013 :
+	      \newcommand\GramU{Les universaux du langage }
+	      \begin{itemize}
+	      	\item \textit{Les universaux du langage admettent des exceptions, GU non.}\\
+	      	En effet, puisqu'il s'agit de faits observ\'es dans les langues, on s'at\-tend \`a avoir par endroits des exceptions dues \`a plusieurs facteurs -- en disant qu'ils admettent, nous voulons juste signifier que des exceptions ne seraient pas problématiques. Par contre GU ne peut admettre d'exception puisqu'il s'agit de ce qui est inn\'e et partag\'e par tous les humains.
+	      	\item \textit{\GramU sont directement observables dans les données recueillies, les éléments de GU non.}\\
+	      	Par d\'efinition, est universal du langage doit pouvoir être observ\'e dans toutes les langues. Si on parle par exemple de l'ordre des adverbes, on peut l'observer directement dans le corpus. Mais les éléments de GU, du fait qu'ils sont rattach\'es \`a la FL ne se prêtent pas \`a une telle observation, comme nous l'avons déjà dit et comme nous aurons l'occasion de le voir.
+	      \end{itemize}
+	      Ce qu'il faut retenir, c'est que GU est un modèle de l'état initial du langage, une théorie de FL.
+	      \begin{details}[Attention aux donn\'ees]
+	      	Dans la modélisation, il ne faut pas non plus se laisser manipuler aveugl\'ement par les données.
+	      	\begin{quote}
+	      	  ``[T]he Galilean style ... is the recognition that it is the abstract systems
+	      	  that you are constructing that are really the truth; the array of phenomena
+	      	  is some distortion of the truth because of too many factors, all sorts of
+	      	  things. And so, it often makes good sense to disregard phenomena and
+	      	  search for principles that really seem to give some deep insight into why
+	      	  some of them are that way, recognizing that there are others you can?t
+	      	  pay attention to.'' 
+	      	  
+	      	  (Chomsky 2002:98, cit\'e dans Samuels 2009)
+	      	\end{quote}
+	      	  Traduction : Le style Galil\'een ... est la reconnaissance du fait que c'est le syst\`eme abstrait [modèle] que vous êtes en train de construire qui est vrai ; la palette de phénomènes étant une distorsion de la vérité, due \`a tellement de facteurs, toutes sortes de choses. 
+	      	  Ainsi, il est souvent assez raisonnable de mettre de c\^ot\'e les phénomènes pour se concentrer sur les principes qui semblent réellement donner une bonne idée sur pourquoi certains sont comme ils sont, en reconnaissant qu'il y en a d'autres auxquels vous ne pouvez prêter attention.
+	      	\begin{prat}[Logique des jugements de grammaticalit\'e]
+	      	  	\begin{quote}
+	      	  	  Suppose you have a principle/condition/constraint P that rules out sentence S, but S is grammatical. Then P does not work. P needs to be rejected (or at least modified to allow in S). On the other hand, suppose that P rules in sentence S, but S is ungrammatical.  Then no conclusion can be drawn, since some other principle Q might be at work which rules out S. [...]
+	      	  	\end{quote}
+	      	  	
+	      	  	\noindent Traduction : 	      	  	
+      	      	Supposons que vous avez un principe/condition/contrainte P qui interdit S [un énoncé/partie d'énoncé], mais S est grammatical. Alors P ne marche pas.P doit être rejeté (ou moins modifi\'e pour prendre en compte S). D'un autre c\^ot\'e, supposons que P autorise S mais S est agrammatical, Alors, aucune conclusion ne peut être tirée, puisque l'agrammaticalit\'e de S peut être due \`a un autre principe Q. [...]  \\ 
+      	      
+	      	  \par\noindent Collins, \#syntactictipoftheday
+	      	\end{prat}
+	      \end{details}	      
+	     
+%	    \subsubsection{Pourquoi GU doit être simple ?}
+%	    Pourquoi doit-on penser que GU est simple i.e. simple veut dire ici qui ne contient pas beaucoup d'éléments.
+          \begin{prat}[Mettre en évidence le contenu de GU]
+          	Il y a plusieurs moyens d'inf\'erer l'architecture de GU :
+          	\begin{itemize}
+          		\item 
+          		  En analysant les propriétés de ``langues'' particuli\`eres. e.g., il a été propos\'e que les phrases comme \Next\ ont été produites par une opération syntaxique qui ferait partie de GU. Mais, ce phénomène semble ne pas être universel cf. Akpoué 2017. Si tel est le cas, l'opération qui l'a produite ne peut être universelle non plus.
+          		  \ex. Affou\'e a dénoncé et les jeunes du village ont attrapé le voleur.
+          		
+          		  (Essayez de traduire cette phrase dans votre langue, pouvez vous avoir le même ordre i.e. l'objet apr\`es le deuxième verbe mais pas après le premier ?)
+          		\item  
+          		  La variation linguistique. Si pour un phénomène donné, plusieurs variantes sont observées \`a travers les langues, alors il faut que GU soit capable de générer toutes ces variantes. e.g., la phonologie doit pouvoir rendre compte \`a la fois des langues orales et des langues signées.
+          		\item 
+          		  Les phénomènes non observés. Si un phénomène n'est observ\'e dans aucune langue, alors il faut empêcher GU de pouvoir le produire. e.g., il n'a pas encore été trouv\'e une langue o\`u l'interrogation se fait en renversant totalement l'ordre la phrase ; i.e. SVO $ \rightarrow $ OVS.
+          	\end{itemize}
+            cf. Collins\footnote{\textit{Introduction to Minimalist Syntax}, cours \`a ALS4, Yamoussokro, Juillet 2016.}
+          \end{prat}
+	    \subsubsection{L'étape des Principes et Paramètres}
+	      Les travaux en GG ont été confront\'es \`a un probl\`eme, \`a un moment donn\'e :
+	        ``\textit{plus le modèle est simple, plus son pouvoir explicatif est grand [...]. Mais
+	      	cet idéal de simplicité est contrebalancé par la nécessité de rendre compte du maximum de
+	      	données et avec la plus grande précision possible, ce qui réclame en général de complexifier
+	      	le modèle [...].}'' 
+	      En effet, les travaux sur l'acquisition du langage suggéraient que GU est simple mais les descriptions linguistiques proposées montraient une grande diversit\'e entre les lan\-gues, ce qui demandait un modèle complexe. Ce dilemme semblait insolvable jusqu'\`a ce que l'approche des \textit{Principes et Param\`etres} cf. Chomsky, Hauser et Fitch 2015 [appendix]. En postulant des principes communs \`a toutes les langues des paramètres de variation, on a réduit grandement la complexité du modèle (GU) tout en tant couvrant l'ensemble, au moins en grande partie, des faits de langue. Dans le même temps, le processus d'acquisition du langage se voyait réduit \`a une simple tache de paramétrage. Mais d'être le modèle définitif, les PP nous ont appris que chercher des principes explicatifs était une solution viable et peut-être même la seule capable de nous permettre d'atteindre l'objectif de minimaliser GU. 	      
+	      C'est cet effort de \textit{minimalisation} de GU se fondant sur la recherche de principes généraux qui a fini par prendre le nom de \textit{Programme Minimaliste} -- en abr\'eg\'e PM.
+	      \begin{prat}
+	      	Simplifier une théorie du Langage n'en fait pas pour autant une théorie Minimaliste ! Il y a d'autres critères à prendre en compte.
+	      \end{prat}
+      
+	    \subsubsection{Retour \`a FL}
+	    Qu'est-ce que la Facult\'e du langage ? Pour répondre \`a cette question, on peut réfléchir sur ce qui différentie le langage humain du langage animal puisque les animaux n'arrivent pas \`a parler comme les hommes.
+	    
+	    La réponse qui fait autorité actuellement a été apportée par Hauser, Chomsky et Fitch . Ils proposent que ce qui relève du ``son'' et du volet conceptuel ne fait pas partie de FL puisque les les animaux émettent des sons, peuvent communiquer par des gestes et son aussi capables de planifier des actions, toutes choses qui relèvent du son et du volet conceptuel. La faculté humaine du langage, qu'ils appellent Faculté du Langage au sens Stricte (FLS) est donc la différence entre Faculté du Langage au sens Large (FLL) et ce qui est commun au langages humain et animal.
+	    \[FLS = FLL - {Point\ commun} \]
+	    Qu'est-ce qui fait la spécificité du langage humain ? La \textit{récursion}. La récursion est une incarnation de la créativité du langage : le fait qu'\`a partir d'un nombre fini d'\'el\'ements, l'homme parvient \`a produire un nombre infini d'énoncés, même sans les avoir préalablement entendus. D'une certaine façon, la récursion peut être définie comme le fait, pour une structure d'abri\-ter une autre du même type qu'elle. Voici un exemple amusant de récursion dans le langage :
+	    \begin{quote}
+	      \raggedright
+	      \textit{La maison que Jack a bâtie
+	      (Français)}\\
+	      
+	      \vspace*{1em} 
+	      C'est la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      C'est le malt\\
+	      Qui était dans la maison que Jack a bâtie.\\ 
+	      
+	      \vspace*{1em}
+	      C'est le rat \\
+	      Qui a mangé le malt,\\ 
+	      Qui était dans la maison que Jack a bâtie.\\ 
+	      
+	      \vspace*{1em}
+	      C'est le chat \\
+	      Qui a tué le rat,\\ 
+	      Qui a mangé le malt\\
+	      Qui était dans la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      C'est le chien\\
+	      Qui a inquiété le chat\\
+	      Qui a tué le rat, \\
+	      Qui a mangé le malt\\
+	      Qui était dans la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      C'est la vache à la corne froissée,\\
+	      Qui a encorné le chien, \\
+	      Qui a inquiété le chat\\
+	      Qui a tué le rat, \\
+	      Qui a mangé le malt\\
+	      Qui était dans la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      C'est la jeune fille esseulée\\
+	      Qui a trait la vache à la corne froissée,\\
+	      Qui a encorné le chien, \\
+	      Qui a inquiété le chat\\
+	      Qui a tué le rat, \\
+	      Qui a mangé le malt\\
+	      Qui était dans la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      C'est l'homme loqueteux et déchiré\\
+	      Qui a embrassé la jeune fille esseulée\\
+	      Qui a trait la vache à la corne froissée,\\
+	      Qui a encorné le chien, \\
+	      Qui a inquiété le chat\\
+	      Qui a tué le rat, \\
+	      Qui a mangé le malt\\
+	      Qui était dans la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      C'est le prêtre, tondu et rasé\\
+	      Qui a marié l'homme loqueteux et déchiré\\
+	      Qui a embrassé la jeune fille esseulée\\
+	      Qui a trait la vache à la corne froissée,\\
+	      Qui a encorné le chien, \\
+	      Qui a inquiété le chat\\
+	      Qui a tué le rat, \\
+	      Qui a mangé le malt\\
+	      Qui était dans la maison que Jack a bâtie\\
+	      
+	      \vspace*{1em}
+	      C'est le coq qui a chanté le matin\\
+	      Qui a éveillé le prêtre tondu et rasé \\
+	      Qui a marié l'homme loqueteux et déchiré\\
+	      Qui a embrassé la jeune fille esseulée\\
+	      Qui a trait la vache à la corne froissée,\\
+	      Qui a encorné le chien, \\
+	      Qui a inquiété le chat\\
+	      Qui a tué le rat, \\
+	      Qui a mangé le malt\\
+	      Qui était dans la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      C'est le fermier qui a semé le grain\\
+	      Qui a nourri le coq qui a chanté le matin\\
+	      Qui a éveillé le prêtre tondu et rasé\\
+	      Qui a marié l'homme loqueteux et déchiré\\
+	      Qui a embrassé la jeune fille esseulée\\
+	      Qui a trait la vache à la corne froissée,\\
+	      Qui a encorné le chien, \\
+	      Qui a inquiété le chat\\
+	      Qui a tué le rat, \\
+	      Qui a mangé le malt\\
+	      Qui est dans la maison que Jack a bâtie.\\
+	      
+	      \vspace*{1em}
+	      \textit{\small D'après The Oxford Dictionary of Nursery Rhymes, La maison que Jack a bâtie a paru pour la première fois sous forme imprimée en 1755 dans Nurse Truelove's New-Year's-Gift (J. Newbury), version française tirée de\  \url{mamalisa.com}}
+	    \end{quote}
+	    Ainsi FL contient essentiellement un mécanisme qui produit la récursion. Ce mécanisme a été appelé \textit{Fusion}.  C'est une opération assez ba\-sique qui prend deux objets et en construit un troisième constitué des deux premiers. Nous reviendrons plus en détails sur Fusion dans l'atelier de Syntaxe.
+	    
+	    FL, et donc GU, contient mécanisme qui génère la récursion : Fusion. Mais il n'y a pas que lui. Vu que les expressions linguistiques sont dotées d'une forme phonologique (e.g., son) et d'un (ou plusieurs sens), FL doit interagir avec les systèmes cognitifs charg\'es de la ``prononciation'' et de l'``interpr\'etation''. 
+	    Le système chargé de la ``prononciation'', c'est le système sensori-moteur -- en abr\'eg\'e SM. Il gère les mouvements dans l'organisme et la perception.  Puisqu'il existe des langues qui utili\-sent des gestes plutôt que des sons comme signifiants, i.e. les langues sign\'ees, le terme \textit{prononciation} ne convient pas. Il nous faut un terme plus générique. Celui qui est utilisé en général c'est \textit{externalisation}. Il a donc trait \`a tout ce qui est phonologique. 
+	    Le système en charge de l'interprétation sémantique, c'est le système Conceptuel-Intentionnel, en abr\'eg\'e C-I. Il gère les sentiments, les émotions, la planification, les jugements, etc.\marnote{FLL = FLS + SM + CI}
+	    
+	    Cette collaboration impose \`a FLS de produire des données qui soient utilisables, \textit{lisibles} ou encore interprétables par les systèmes d'interface SM et C-I. 
+	    
+	    \paragraph{Notion de lisibilit\'e/interprétabité}
+	      Prenons un exemple assez courant : Si je tente d'ouvrir un fichier vidéo avec Word, je ne pourrai pas, pourquoi ? Parce que les informations contenu ce fichier sont cod\'es dans un format/langage que Word ne comprend pas. 
+	      
+	      Si FLS doit donc interagir avec SM et C-I, il faut que les expressions linguistiques soient apparaissent dans un format accessible \`a SM et C-I. On pose que les systèmes d'interface comprennent le langage des traits -- mais qu'il existe des traits illisibles pour ceux-ci, notamment les traits que la syntaxe utilisent pour son propre fonctionnement.  
+	      
+	      Ceci dit, pour que les expressions linguistiques soient interprétées par SM et C-I, il faut que les représentations qui leur parviennent ne contienne aucun trait ininterprétable. C'est pourquoi tous les traits ininterprétables doivent être supprimés avant d'arriver aux interfaces sinon la dérivation flanche/échoue i.e. pas d'interprétation ou d'externalisation e.g., prononciation. 
+	      
+	      Ainsi, FLS contient un mécanisme qui produit des structures récursives (i.e. Fusion), mais aussi un mécanisme qui les transfert aux interfaces. FLS a donc 3 composants : 
+	      \begin{itemize}
+	      	\item Un composant syntaxique, appel\'e Syntaxe Étroite car son rôle se trouve réduit \`a celui de combiner les éléments cf. rouveret2015arguments.
+	      	\item Un composant sémantique, charg\'e de produire les représentations sémantiques destinées \`a être interprétées par C-I. Il peut être not\'e $ \Sigma $.
+	      	\item Un composant phonologique, charg\'e de produire les représentations phonologiques destinées \`a être interprétées par SM. Il peut être not\'e $ \Phi $.
+	      \end{itemize} 
+	      C'est un point très important. Il est au coeur même du PM si bien qu'il a donn\'e lieu \`a la formulation de la principale ligne directrice du PM et d'un principe (Interprétabité Totale). 
+	      La ligne principale directrice du PM a été appelée \textit{Thèse Minimaliste Forte} -- en abrégé SMT i.e. \textit{Strong Minimalist Thesis}. Elle peut être formulée comme suit :
+	      \ex. \textbf{Thèse Minimaliste Forte (SMT)} \quad Le langage est la solution optimale aux conditions de lisibilité imposées par les interfaces.
+	      
+	      Autrement dit, le langage est conçu  de sorte \`a relier efficacement du sens \`a du ``son''. Il faut entendre ici par langage, l'état final
+	      \begin{principe}[Interprétabilité Totale]
+	      	Tous les traits arrivant aux interfaces doivent être interprétés.
+	      \end{principe}
+	  \subsection{L'état final : Compétence linguistique}
+	      l'état final = i-langage [anciennement, compétence linguistique]. 
+	      \paragraph{\textit{i} comme interne, individuel et surtout intensionnel} 
+	     depuis toujours, langage = principe/règle qui permet de générer une multitude de faits linguistiques
+	     
+	     Définition : Une GG est un système de règles qui permet de générer toutes les phrases grammaticales d'une ``langue'' donn\'ee et aucune des phra\-ses agrammaticales de cette langue.
+	     \begin{details}[La surgénération en linguistique]
+	     	La surgénération est le fait pour une opération ou un modèle linguistique de générer l'ensemble des données grammaticales mais aussi des données agrammaticales.
+	     \end{details}
+        
+        \paragraph{Les i-langages comme systèmes computationnels}
+        \begin{quote}
+          [E]ach I-language can be regarded as a computational procedure that generates an unbounded array of hierarchically structured expressions, each with an interpretation at the Sensorymotor (SM) and Conceptual-intentional (CI) interface
+          
+          Chomsky2014
+        \end{quote}
+        Traduction : Chaque langage-i peut être vu comme un procédure computationnelle qui génère un éventail illimité d'expressions hiérarchiquement structurés, chacune avec une interprétation aux interfaces Sensorimoteur (SM) et Conceptuel-Intentionnel (CI).
+        
+        Une computation, c'est l'application d'une opération ; e.g., faire une addition, c'est effectuer une computation. Un système computationnel est un système qui utilise des opérations. Dire que les langages-i sont des procédures computationnelles revient \`a dire qu'elles sont des procédures impliquant l'applications d'opérations \`a des objets plus ou moins élémentaires/primitifs.
+	    \subsubsection{L'architecture du langage : 3 facteurs}
+	      L'architecture des i-langages, i.e. \textit{grosso modo} des langues que nous décrivons habituellement, est le fruit de l'interaction de trois facteurs :
+	      \begin{itemize}
+	      	\item FLS/GU
+	      	\item l'expérience/données primaires i.e. interactions avec l'enfant (dans sa première langue de socialisation i.e. langue maternelle)
+	      	\item et le troisième facteur.
+	      \end{itemize} 
+          Il est appelé ainsi car son ajout \`a l'équation est récente cf. Chomsky 2006, tandis que les deux premiers sont connus depuis longtemps. En gros Chomsky explique que si le langage est un organe, il appartient donc au monde naturel et est aussi soumis aux lois de la nature qui déterminent par exemple la forme des cellules de notre corps. En ce qui concerne un système symbolique, computationnel comme le langage, ces lois de la nature se traduisent en \textit{principes de calcul efficace} au nombre desquels on compte la condition de non altération -- en abrégé NTC i.e. \textit{Non Tampering Condition} -- et la computation minimale -- i.e. grosso modo le principe d'\'economie. 
+          \begin{principe}[Condition de non modification]
+          	Une opération, lorsqu'elle s'applique \`a un objet ne doit pas le modifier.
+          \end{principe}
+          \begin{appli}
+          	Application \`a la sonorisation et \`a la propagation du ton.
+          \end{appli}
+          	
+	    \begin{prat}
+	      En décrivant une langue donnée, on va chercher \`a rendre compte des probl\`emes pos\'es en ayant recours \`a des principes géné\-raux qui relèvent soit de GU soit du troisième facteur, soit encore des conditions d'interface.
+	    \end{prat}
+	  \section{Traits, entrées lexicales et lexique}
+	    \subsection{Les traits dans le PM}   
+	      Les traits, dans le PM, occupent une place de choix : ils guident les opérations i.e. les opérations s'appliquent en fonction des traits des items lexicaux. 
+	      \paragraph{La structure des traits}
+	      Mais malgré cette importance, l'exacte nature des traits reste encore un mystère pour le PM car celui-ci ne dispose pas d'une ``théorie'' générale pour les traits ; qu'ils soient phonologiques, syntaxiques ou sémantiques.
+	      \paragraph{La proposition d'Adger (2010)}
+	      David Adger (2010) va proposer une théorie qui se voulait par définition une théorie Minimaliste de la structure des traits. Sa proposition peut se résumer en deux postulats :
+	      
+	      \ex. Un trait est un couple (Att,val) où Att est un attribut et val une valeur.
+	      
+	      Ce postulat est largement repris pour les traits phonologiques avec notamment la contribution de Samuels (2009, 2011) à la Phonologie Minimaliste, et tacitement pour les traits syntaxiques et sémantiques. 
+	      
+	      \ex. Aucune valeur ne peut être complexe
+	      
+	      Le postulat en \Last a valeur de théorème. Mais nous n'allons pas en faire la démonstration ici. 
+	      Cela interdit donc d'avoir des traits comme ceux en \Next ou l'attribut \textit{Genre} a pour valeur un trait : (M\^ale,+)
+	      \ex. * (Genre,(M\^ale,+))
+	      
+	      Toutefois, dans la pratique, ce qui se voulait une théorie générale des traits, se révèle être en fait une théorie des traits et des catégories syntaxiques.
+	      \paragraph{Traits interprétables vs traits ininterprétables}
+	      \textit{Trait interprétable :} trait qui peut recevoir une interprétation aux interfaces i.e. être associé a du contenu phonétique ou sémantique/conceptuel e.g. ,
+	       \traitgazd{occl,--}, etc.
+	      
+	      \textit{Trait ininterprétable :} trait qui ne peut recevoir d?interprétation aux interfaces, qui est illisible aux interfaces ; e.g. traits de catégorie \traitgazd{cat,D}, \traitgazd{cat,C}, etc.
+	      
+	      \paragraph{Ininterprétable ou non valué ?}
+	      La notion d'interprétabilité des traits est de plus en plus reliée à celle de valuation. 
+	      Dans une telle perspective, un trait non interprétable ne possède pas de valeur spécifiée dans le lexique e.g. le trait de nombre des noms n'est défini depuis le lexique mais déterminé dans la dérivation. 
+	      Il est de coutume de voir les traits non valués être notés comme ceci : uF:\_ et les traits valués dans le lexique, notés F:val. 
+	      
+	      \paragraph{Définition et notation des traits}
+	      Mais nous allons adopter le système proposé par Adger\footnote{Ceux qui sont intéressés par ce sujet peuvent aussi consulter Adger et Svenonius 2011} ici en la formalisant un peu.
+	      \begin{defin}[Trait]
+	      	$ x $ est un trait ssi $ x \in T_{FL} $ avec $ T_{FL} \subset ATT \times VAL $
+	      \end{defin}
+          Ici ATT et VAL sont des ensembles d'attributs et de valeurs. 
+          \begin{defin}\label{def:val}[VAL]
+          	VAL est un ensemble de valeurs. Formellement, ATT est un ensemble fini de symboles. \[ ATT = \{+,-,\emptyset,...\}\]
+          \end{defin}
+          
+          \begin{theor}
+          	Aucune valeur ne peut être complexe.
+          \end{theor}
+          
+          \begin{notation}[Trait]
+          	Pour tout trait de la forme \traitgazd{att, val}, nous écrirons \traitgazd{att, val} ou \traitclass{att:VAL}.
+          \end{notation}
+	      \begin{exo}
+	      	Proposez une notation pour 
+	      	\begin{enumerate}
+	      		\item les traits non valu\'es en vous aidant de la définition \ref{def:val}
+	      		\item le trait de nombre \textit{pluriel}
+	      	\end{enumerate}
+	      \end{exo}
+      \subsection{Les entrées lexicales}
+        Le terme \textit{entrée lexicale} désigne grosso modo les mots. Techniquement on assume que les entrées lexicales ont trois ``ensembles de traits''. Les traits phonologiques, sémantiques et syntaxiques, not\'es respectivement PHON/Phon, SEM/Sem et SYN/Syn. On y reviendront plus en détails au fur et a mesure. Seulement nous donnons la notation générale applicable aux ensembles de traits de façon stricte.
+        \begin{notation}[Ensemble de trait]
+          Pour tout $ E \subset T_{FL} $, nous écrirons 
+          \matriss{att1:val1, att2:val2, ..., attn:valn}
+        \end{notation}
+        Le lexique quant \`a lui est conçu comme un ensemble fini d'entrées lexicales. 
+%\end{document}
